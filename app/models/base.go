@@ -1,11 +1,13 @@
 package models
 
 import (
+	"crypto/sha1"
 	"database/sql"
 	"fmt"
 	"log"
 	"monta-channel/config"
 
+	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -14,7 +16,9 @@ var Db *sql.DB
 var err error
 
 const (
-	tableNameUser = "users"
+	tableNameUser    = "users"
+	tableNameContent = "contents"
+	tableNameThread  = "threads"
 )
 
 func init() {
@@ -32,4 +36,30 @@ func init() {
 		created_at DATETIME)`, tableNameUser)
 
 	Db.Exec(cmdU)
+
+	cmdC := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		Content TEXT,
+		user_id INTEGER,
+		thread_id INTEGER,
+		created_at DATETIME)`, tableNameContent)
+
+	Db.Exec(cmdC)
+
+	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			Title STRING,
+			created_at DATETIME)`, tableNameThread)
+
+	Db.Exec(cmdT)
+}
+
+func createUUID() (uuidobj uuid.UUID) {
+	uuidobj, _ = uuid.NewUUID()
+	return uuidobj
+}
+
+func Encrypt(plaintext string) (cryptext string) {
+	cryptext = fmt.Sprintf("%x", sha1.Sum([]byte(plaintext)))
+	return cryptext
 }
