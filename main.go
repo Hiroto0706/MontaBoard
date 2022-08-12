@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"monta-channel/config"
+	"monta-channel/app/controllers"
+	"monta-channel/app/models"
 )
 
 func main() {
-	fmt.Println(config.Config)
-	log.Println("test")
+	fmt.Println(models.Db)
+
+	controllers.StartMainServer()
 }
