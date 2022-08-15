@@ -1,0 +1,64 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <title>もんた。掲示板</title>
+</head>
+<body>
+  <header class="header-image">
+    <img src="/static/img/monta-keijiban-front-image.jpg">
+  </header>
+  <div class="wrapper">
+    <h1>もんた。掲示板</h1>
+    <div class="content">
+      <div class="main-content">
+        {{template "content" .}}
+      </div>
+      <div class="side-menu">
+        <h4>新しいスレッド</h4>
+        <ul>
+          <li><a href="">スレッド1</a></li>
+          <li><a href="">スレッド2</a></li>
+          <li><a href="">スレッド3</a></li>
+          <li><a href="">スレッド4</a></li>
+          <li><a href="">スレッド5</a></li>
+        </ul>
+        <h4>人気のスレッド</h4>
+        <ul>
+          <li><a href="">スレッド1</a></li>
+          <li><a href="">スレッド2</a></li>
+          <li><a href="">スレッド3</a></li>
+          <li><a href="">スレッド4</a></li>
+          <li><a href="">スレッド5</a></li>
+        </ul>
+        <div class="categories">
+          <h4>カテゴリー一覧</h4>
+          <ul>
+            <li><a href="">カテゴリー1</a></li>
+            <li><a href="">カテゴリー2</a></li>
+            <li><a href="">カテゴリー3</a></li>
+            <li><a href="">カテゴリー4</a></li>
+            <li><a href="">カテゴリー5</a></li>
+            <li><a href="">カテゴリー6</a></li>
+            <li><a href="">カテゴリー7</a></li>
+            <li><a href="">カテゴリー8</a></li>
+            <li><a href="">カテゴリー9</a></li>
+            <li><a href="">カテゴリー10</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <footer>
+      &copy; monta. keijiban
+    </footer>
+  </div>
+</body>
+</html>
+{{end}}

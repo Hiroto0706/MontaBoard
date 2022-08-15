@@ -1,8 +1,6 @@
 package main
 
-import (
-	"monta-channel/app/controllers"
-)
+import "monta-channel/app/controllers"
 
 func main() {
 	// fmt.Println(models.Db)

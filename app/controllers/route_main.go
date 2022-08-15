@@ -1,15 +1,9 @@
 package controllers
 
 import (
-	"log"
 	"net/http"
-	"text/template"
 )
 
 func top(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("app/views/templates/top.html")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	t.Execute(w, "hello world")
+	generateHTML(w, "スレッド一覧", "layout", "top")
 }
