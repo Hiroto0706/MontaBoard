@@ -44,6 +44,33 @@ func GetContent(id int) (content Content, err error) {
 	return content, err
 }
 
+func GetContentsByThreadID(id int) (contents []Content, err error) {
+	cmd := `select id, content, user_id, thread_id, created_at from contents where thread_id = ?`
+	rows, err := Db.Query(cmd, id)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for rows.Next() {
+		var content Content
+		err = rows.Scan(
+			&content.ID,
+			&content.Content,
+			&content.UserID,
+			&content.ThreadID,
+			&content.CreatedAt)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		contents = append(contents, content)
+	}
+	rows.Close()
+
+	return contents, err
+}
+
 func (c *Content) UpdateContent() (err error) {
 	cmd := `update contents set content = ? where user_id = ?`
 	_, err = Db.Exec(cmd, c.Content, c.UserID)

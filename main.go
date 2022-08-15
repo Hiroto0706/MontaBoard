@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"monta-channel/app/models"
+	"monta-channel/app/controllers"
 )
 
 func main() {
 	// fmt.Println(models.Db)
 
-	// controllers.StartMainServer()
+	controllers.StartMainServer()
 
 	// user, _ := models.GetUser(2)
 	// fmt.Println(user)
@@ -18,23 +17,23 @@ func main() {
 	// user.CreateContent("結論口臭い", 7)
 	// fmt.Println(user)
 
-	contents, _ := models.GetContentsByThreadID(7)
-	for _, v := range contents {
-		v.Content = "修正版 口臭い"
-		v.UpdateContent()
-	}
+	// contents, _ := models.GetContentsByThreadID(7)
+	// for _, v := range contents {
+	// 	v.Content = "修正版 口臭い"
+	// 	v.UpdateContent()
+	// }
 
-	contents, _ = models.GetContentsByThreadID(7)
-	for _, v := range contents {
-		fmt.Println(v)
-	}
+	// contents, _ = models.GetContentsByThreadID(7)
+	// for _, v := range contents {
+	// 	fmt.Println(v)
+	// }
 
-	fmt.Println("====================================")
+	// fmt.Println("====================================")
 
-	con, _ := models.GetContent(16)
-	fmt.Println(con)
+	// con, _ := models.GetContent(17)
+	// fmt.Println(con)
 
-	con.DeleteContent()
+	// con.DeleteContent()
 
 	// t, _ := models.GetThread(1)
 	// fmt.Println(t)
