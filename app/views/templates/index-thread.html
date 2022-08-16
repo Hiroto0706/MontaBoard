@@ -1,0 +1,77 @@
+{{define "content"}}
+<h2>スレッドタイトル</h2>
+
+<div class="section-thread">
+  <div class="thread-content self-content">
+    <form action="">
+      <div class="content-name">1:テスト太郎 2022/08/10(月) 20:12:10</div>
+      <p class="content-text">
+        <input type="text" value="これはテストです。自分のコンテントです。" class="form-control">
+      </p>
+      <div class="content-btn">
+        <button type="submit" class="update-btn">編集</button>
+        <button type="submit" class="delete-btn">削除</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="thread-content">
+    <div class="content-name">2:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">3:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">4:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+
+  <div class="thread-content self-content">
+    <form action="">
+      <div class="content-name">1:テスト太郎 2022/08/10(月) 20:12:10</div>
+      <p class="content-text">
+        <input type="text" value="これはテストです。自分のコンテントです。" class="form-control">
+      </p>
+      <div class="content-btn">
+        <button type="submit" class="update-btn">編集</button>
+        <button type="submit" class="delete-btn">削除</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+  <div class="thread-content">
+    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <p class="content-text">これはテストです。</p>
+  </div>
+</div>
+
+<form class="form-newcontent" role="form" action="/index/create" method="post">
+  名前
+  <input type="text" name="name" value="名無しのプー太郎">
+  テキスト
+  <textarea class="new-content-text" type="" name="text" placeholder="">ここにテキストを入力してね</textarea>
+  <button type="submit" class="create-btn">投稿する</button>
+</form>
+{{end}}

@@ -8,7 +8,12 @@ import (
 
 func signup(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		generateHTML(w, nil, "layout", "signup")
+		_, err := session(w, r)
+		if err != nil {
+			generateHTML(w, nil, "layout", "signup", "side-btn-if-not-login")
+		} else {
+			http.Redirect(w, r, "/index", 302)
+		}
 	} else if r.Method == "POST" {
 		err := r.ParseForm()
 		if err != nil {
@@ -42,7 +47,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			}
 			http.SetCookie(w, &cookie)
 
-			http.Redirect(w, r, "/thread", 302)
+			http.Redirect(w, r, "/", 302)
 		} else {
 			http.Redirect(w, r, "/signup", 302)
 		}
@@ -50,7 +55,12 @@ func signup(w http.ResponseWriter, r *http.Request) {
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
-	generateHTML(w, nil, "layout", "login")
+	_, err := session(w, r)
+	if err != nil {
+		generateHTML(w, nil, "layout", "login", "side-btn-if-not-login")
+	} else {
+		http.Redirect(w, r, "/index", 302)
+	}
 }
 
 func authenticate(w http.ResponseWriter, r *http.Request) {
@@ -74,8 +84,22 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 		}
 		http.SetCookie(w, &cookie)
 
-		http.Redirect(w, r, "/thread", 302)
+		http.Redirect(w, r, "/", 302)
 	} else {
 		http.Redirect(w, r, "/login", 302)
 	}
+}
+
+func logout(w http.ResponseWriter, r *http.Request) {
+	cookie, err := r.Cookie("_cookie")
+	if err != nil {
+		log.Println(err)
+	}
+
+	if err != http.ErrNoCookie {
+		session := models.Session{UUID: cookie.Value}
+		session.DeleteSessionByUUID()
+	}
+
+	http.Redirect(w, r, "/", 302)
 }

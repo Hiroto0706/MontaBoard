@@ -1,35 +1,12 @@
 {{define "content"}}
-<h2>{{.}}</h2>
+<h2>スレッド一覧</h2>
   <ul class="threads">
-    <li><a href="/thread">スレッド1</a></li>
-    <li><a href="">スレッド2</a></li>
-    <li><a href="">スレッド3</a></li>
-    <li><a href="">スレッド4</a></li>
-    <li><a href="">スレッド5</a></li>
-    <li><a href="">スレッド6</a></li>
-    <li><a href="">スレッド7</a></li>
-    <li><a href="">スレッド8</a></li>
-    <li><a href="">スレッド9</a></li>
-    <li><a href="">スレッド10</a></li>
-    <li><a href="">スレッド11</a></li>
-    <li><a href="">スレッド12</a></li>
-    <li><a href="">スレッド13</a></li>
-    <li><a href="">スレッド14</a></li>
-    <li><a href="">スレッド15</a></li>
-    <li><a href="">スレッド16</a></li>
-    <li><a href="">スレッド17</a></li>
-    <li><a href="">スレッド18</a></li>
-    <li><a href="">スレッド19</a></li>
-    <li><a href="">スレッド20</a></li>
-    <li><a href="">スレッド21</a></li>
-    <li><a href="">スレッド22</a></li>
-    <li><a href="">スレッド23</a></li>
-    <li><a href="">スレッド24</a></li>
-    <li><a href="">スレッド25</a></li>
-    <li><a href="">スレッド26</a></li>
-    <li><a href="">スレッド27</a></li>
-    <li><a href="">スレッド28</a></li>
-    <li><a href="">スレッド29</a></li>
-    <li><a href="">スレッド30</a></li>
+    {{range .Threads}}
+      <li>
+        <a href="/thread">
+          {{.Title}}
+        </a>
+      </li>
+    {{end}}
   </ul>
 {{end}}

@@ -1,0 +1,12 @@
+{{define "content"}}
+<h2>スレッド一覧（ログイン済み）</h2>
+  <ul class="threads">
+    {{range .Threads}}
+    <li>
+      <a href="/index/thread">
+        {{.Title}}
+      </a>
+    </li>
+    {{end}}
+  </ul>
+{{end}}
