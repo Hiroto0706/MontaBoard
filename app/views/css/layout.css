@@ -38,13 +38,18 @@ img {
   -moz-box-shadow:rgba(238, 238, 238, 0.360784) 0px 0px 24px 20px;
 }
 
+.keijiban-title-h1 a{
+  color: black;
+  text-decoration: none;
+}
+
 .keijiban-title div {
   width: 20%;
   height: auto;
   margin: auto 0;
 }
 
-.keijiban-title a {
+.keijiban-title div a {
   display: inline-block;
   color: white;
   text-decoration: none;
@@ -160,3 +165,45 @@ img {
 .self-content {
   background-color: rgb(181, 255, 158);
 }
+
+
+
+
+/* signup.htmlのcss */
+.form-signin {
+  padding: 3%;
+}
+
+.form-control {
+  width: 100%;
+  border: solid 1px rgb(54, 54, 54);
+  border-radius: 5px;
+  padding: 1%;
+  margin-bottom: 16px;
+}
+
+.btn-signup {
+  background-color:rgb(221, 56, 56);
+  color: white;
+  padding: 1.5%;
+  border-radius: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* login.htmlのcss */
+.form-login {
+  padding: 3%;
+}
+
+.btn-login {
+  background-color:rgb(49, 87, 255);
+  color: white;
+  padding: 1.5%;
+  border-radius: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+

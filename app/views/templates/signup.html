@@ -1,0 +1,9 @@
+{{define "content"}}
+  <h2>登録フォーム</h2>
+  <form class="form-signin" role="form" action="/signup" method="post">
+    <input id="name" type="text" placeholder="名前" class="form-control">
+    <input id="email" type="email" placeholder="メールアドレス" class="form-control">
+    <input id="password" type="password" placeholder="パスワード" class="form-control">
+    <button class="btn-signup" type="submit">登録する</button>
+  </form>
+{{end}}

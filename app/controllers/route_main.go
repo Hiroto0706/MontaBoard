@@ -11,3 +11,4 @@ func top(w http.ResponseWriter, r *http.Request) {
 func thread(w http.ResponseWriter, r *http.Request) {
 	generateHTML(w, nil, "layout", "thread")
 }
+
