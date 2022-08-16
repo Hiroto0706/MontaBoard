@@ -1,0 +1,374 @@
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59682: template: login.html:3: unexpected <define> in command
+goroutine 68 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x1400011b9d0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x1400011b9d0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b8540}, {0x0, 0x0}, {0x1400011f588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b8540}, 0x14000202700)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b8540}, 0x14000202700)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b8540}, 0x14000202700)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b8540}, 0x14000202700)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e000, {0x1035880f0, 0x1400002ac40})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59683: template: login.html:3: unexpected <define> in command
+goroutine 69 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012620})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012620})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140001a0700}, {0x0, 0x0}, {0x1400011d588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140001a0700}, 0x14000202600)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140001a0700}, 0x14000202600)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140001a0700}, 0x14000202600)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140001a0700}, 0x14000202600)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e0a0, {0x1035880f0, 0x1400002abc0})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59684: template: login.html:3: unexpected <define> in command
+goroutine 71 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x1400011bae0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x1400011bae0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c460}, {0x0, 0x0}, {0x14000259588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c460}, 0x14000202800)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c460}, 0x14000202800)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c460}, 0x14000202800)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c460}, 0x14000202800)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e140, {0x1035880f0, 0x1400002ad80})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59688: template: login.html:3: unexpected <define> in command
+goroutine 60 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x1400011bc50})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x1400011bc50})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140001a07e0}, {0x0, 0x0}, {0x1400011f588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140001a07e0}, 0x140002c8800)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140001a07e0}, 0x140002c8800)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140001a07e0}, 0x140002c8800)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140001a07e0}, 0x140002c8800)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400013f400, {0x1035880f0, 0x14000288b40})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59689: template: login.html:3: unexpected <define> in command
+goroutine 61 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x1400011bdb0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x1400011bdb0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140001a08c0}, {0x0, 0x0}, {0x1400011d588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140001a08c0}, 0x1400014e900)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140001a08c0}, 0x1400014e900)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140001a08c0}, 0x1400014e900)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140001a08c0}, 0x1400014e900)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400013f4a0, {0x1035880f0, 0x14000153240})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:45 server.go:3197: http: panic serving [::1]:59690: template: login.html:3: unexpected <define> in command
+goroutine 85 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x140000127e0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x140000127e0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b8620}, {0x0, 0x0}, {0x14000121588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b8620}, 0x140002c8900)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b8620}, 0x140002c8900)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b8620}, 0x140002c8900)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b8620}, 0x140002c8900)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d81e0, {0x1035880f0, 0x14000288bc0})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:46 server.go:3197: http: panic serving [::1]:59691: template: login.html:3: unexpected <define> in command
+goroutine 76 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012950})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012950})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c540}, {0x0, 0x0}, {0x14000121588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c540}, 0x140002c8a00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c540}, 0x140002c8a00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c540}, 0x140002c8a00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c540}, 0x140002c8a00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e1e0, {0x1035880f0, 0x14000288d80})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:46 server.go:3197: http: panic serving [::1]:59692: template: login.html:3: unexpected <define> in command
+goroutine 77 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012ab0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012ab0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c620}, {0x0, 0x0}, {0x14000259588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c620}, 0x14000202900)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c620}, 0x14000202900)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c620}, 0x14000202900)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c620}, 0x14000202900)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e280, {0x1035880f0, 0x1400002b000})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:46 server.go:3197: http: panic serving [::1]:59693: template: login.html:3: unexpected <define> in command
+goroutine 100 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012c10})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012c10})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c700}, {0x0, 0x0}, {0x1400011d588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c700}, 0x1400014ea00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c700}, 0x1400014ea00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c700}, 0x1400014ea00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c700}, 0x1400014ea00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400013f540, {0x1035880f0, 0x14000153640})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:47 server.go:3197: http: panic serving [::1]:59695: template: login.html:3: unexpected <define> in command
+goroutine 88 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012d80})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012d80})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c7e0}, {0x0, 0x0}, {0x1400011d588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c7e0}, 0x14000202a00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c7e0}, 0x14000202a00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c7e0}, 0x14000202a00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c7e0}, 0x14000202a00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d8280, {0x1035880f0, 0x1400002b5c0})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:47 server.go:3197: http: panic serving [::1]:59696: template: login.html:3: unexpected <define> in command
+goroutine 89 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000294a70})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000294a70})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b8700}, {0x0, 0x0}, {0x14000255588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b8700}, 0x140002c8b00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b8700}, 0x140002c8b00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b8700}, 0x140002c8b00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b8700}, 0x140002c8b00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d8320, {0x1035880f0, 0x14000288e00})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:47 server.go:3197: http: panic serving [::1]:59697: template: login.html:3: unexpected <define> in command
+goroutine 93 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x1400011be70})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x1400011be70})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b87e0}, {0x0, 0x0}, {0x14000255588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b87e0}, 0x140002c8c00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b87e0}, 0x140002c8c00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b87e0}, 0x140002c8c00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b87e0}, 0x140002c8c00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d83c0, {0x1035880f0, 0x14000289040})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:48 server.go:3197: http: panic serving [::1]:59698: template: login.html:3: unexpected <define> in command
+goroutine 102 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000294bf0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000294bf0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c8c0}, {0x0, 0x0}, {0x1400011f588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c8c0}, 0x1400014eb00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c8c0}, 0x1400014eb00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c8c0}, 0x1400014eb00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c8c0}, 0x1400014eb00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400013f5e0, {0x1035880f0, 0x14000153740})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:48 server.go:3197: http: panic serving [::1]:59699: template: login.html:3: unexpected <define> in command
+goroutine 122 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000294d60})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000294d60})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b88c0}, {0x0, 0x0}, {0x1400011d588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b88c0}, 0x14000202b00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b88c0}, 0x14000202b00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b88c0}, 0x14000202b00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b88c0}, 0x14000202b00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400023e320, {0x1035880f0, 0x1400002b800})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:48 server.go:3197: http: panic serving [::1]:59700: template: login.html:3: unexpected <define> in command
+goroutine 97 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000294ec0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000294ec0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b89a0}, {0x0, 0x0}, {0x14000255588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b89a0}, 0x140002c8d00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b89a0}, 0x140002c8d00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b89a0}, 0x140002c8d00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b89a0}, 0x140002c8d00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d8460, {0x1035880f0, 0x14000289300})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:48 server.go:3197: http: panic serving [::1]:59701: template: login.html:3: unexpected <define> in command
+goroutine 136 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x140000a40a0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x140000a40a0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x140002b8a80}, {0x0, 0x0}, {0x14000255588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x140002b8a80}, 0x140002c8e00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x140002b8a80}, 0x140002c8e00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x140002b8a80}, 0x140002c8e00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x140002b8a80}, 0x140002c8e00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d8500, {0x1035880f0, 0x14000289700})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/16 12:35:53 server.go:3197: http: panic serving [::1]:59702: template: login.html:3: unexpected <define> in command
+goroutine 139 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x10352bd80, 0x14000012f90})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103585ad8, 0x14000012f90})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103587f10, 0x1400020c9a0}, {0x0, 0x0}, {0x1400011f588, 0x2, 0x2})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:16 +0xdc
+monta-channel/app/controllers.login({0x103587f10, 0x1400020c9a0}, 0x14000202c00)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_auth.go:53 +0x9c
+net/http.HandlerFunc.ServeHTTP(0x103583d30, {0x103587f10, 0x1400020c9a0}, 0x14000202c00)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103778680, {0x103587f10, 0x1400020c9a0}, 0x14000202c00)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x140001a0000}, {0x103587f10, 0x1400020c9a0}, 0x14000202c00)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140002d85a0, {0x1035880f0, 0x1400002b940})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800

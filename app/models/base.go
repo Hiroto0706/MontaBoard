@@ -21,6 +21,7 @@ const (
 	tableNameContent  = "contents"
 	tableNameThread   = "threads"
 	tableNameCategory = "categories"
+	tableNameSession  = "sessions"
 )
 
 func init() {
@@ -62,6 +63,15 @@ func init() {
 			created_at DATETIME)`, tableNameCategory)
 
 	Db.Exec(cmdCate)
+
+	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		uuid STRING NOT NULL,
+		email STRING,
+		user_id INTEGER,
+		created_at DATETIME)`, tableNameSession)
+
+	Db.Exec(cmdS)
 
 	cmd := `insert into users (uuid, name, email, password, created_at) values (?, ?, ?, ?, ?)`
 

@@ -48,7 +48,7 @@ func GetContentsByThreadID(id int) (contents []Content, err error) {
 	cmd := `select id, content, user_id, thread_id, created_at from contents where thread_id = ?`
 	rows, err := Db.Query(cmd, id)
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	for rows.Next() {
@@ -61,7 +61,7 @@ func GetContentsByThreadID(id int) (contents []Content, err error) {
 			&content.CreatedAt)
 
 		if err != nil {
-			log.Fatalln(err)
+			log.Println(err)
 		}
 
 		contents = append(contents, content)
