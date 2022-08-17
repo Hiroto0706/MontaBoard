@@ -154,10 +154,11 @@ img {
 }
 
 .thread-content {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   background-color: whitesmoke;
   padding: 3%;
   border-radius: 20px;
+  width: 90%;
 }
 
 .content-name {
@@ -171,6 +172,8 @@ img {
 
 .self-content {
   background-color: rgb(181, 255, 158);
+  margin-left: auto;
+  margin-right: 0;
 }
 
 
