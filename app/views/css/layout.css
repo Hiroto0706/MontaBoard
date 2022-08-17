@@ -220,13 +220,17 @@ img {
 
 
 /* index-thread.htmlのcss */
-.form-newcontent input {
+.form-newcontent {
+  padding: 2%;
+}
+
+/* .form-newcontent input {
   width: 100%;
   display: block;
   border: solid 1px black;
   padding: 0.6%;
   margin-bottom: 8px;
-}
+} */
 
 .new-content-text {
   width: 100%;
@@ -262,6 +266,15 @@ img {
   color: white;
   padding: 1% 2%;
   border-radius: 20px;
+}
+
+.thread-form {
+  width: 100%;
+  display: block;
+  border: solid 1px black;
+  padding: 0.6%;
+  margin-bottom: 8px;
+  background-color: white;
 }
 
 

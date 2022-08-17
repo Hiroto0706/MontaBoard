@@ -79,11 +79,11 @@ func init() {
 
 	cmd = `insert into threads (title, created_at) values (?, ?)`
 
-	Db.Exec(cmd, "スレッド1", time.Now())
+	Db.Exec(cmd, "門田拓大ってやつさぁwwwwwwwww", time.Now())
 
 	cmd = `insert into contents (content, user_id, thread_id, created_at) values (?, ?, ?, ?)`
 
-	Db.Exec(cmd, "this is a test", 1, 1, time.Now())
+	Db.Exec(cmd, "それは草", 2, 2, time.Now())
 
 	cmd = `insert into categories (name, thread_id, created_at) values (?, ?, ?)`
 

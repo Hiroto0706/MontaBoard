@@ -3,9 +3,7 @@
   <ul class="threads">
     {{range .Threads}}
     <li>
-      <a href="/index/thread">
-        {{.Title}}
-      </a>
+      {{.ID}}:<a href="/index/thread/{{.ID}}">{{.Title}}</a>
     </li>
     {{end}}
   </ul>

@@ -6,10 +6,13 @@ import (
 )
 
 type Thread struct {
-	ID        int
-	Title     string
-	CreatedAt time.Time
-	Threads   []Thread
+	ID          int
+	Title       string
+	CreatedAt   time.Time
+	Threads     []Thread
+	NewThreads  []Thread
+	Contents    []Content
+	LoginUserID int
 }
 
 func CreateThread(title string) (err error) {
@@ -61,6 +64,32 @@ func GetThreads() (threads []Thread, err error) {
 
 	return threads, err
 }
+
+// func GetNewThreadsLimitFive() (threads []Thread, err error) {
+// 	cmd := `select id, title, created_at form threads order by created_at desc limit 5`
+
+// 	rows, err := Db.Query(cmd)
+// 	if err != nil {
+// 		log.Println(err)
+// 	}
+
+// 	for rows.Next() {
+// 		var thread Thread
+// 		err = rows.Scan(
+// 			&thread.ID,
+// 			&thread.Title,
+// 			&thread.CreatedAt)
+
+// 		if err != nil {
+// 			log.Println(err)
+// 		}
+
+// 		threads = append(threads, thread)
+// 	}
+// 	rows.Close()
+
+// 	return threads, err
+// }
 
 func (t *Thread) UpdataThread() (err error) {
 	cmd := `update threads set title = ? where id = ?`

@@ -1,8 +1,8 @@
 {{define "content"}}
   <h2>ログインフォーム</h2>
   <form class="form-login" role="form" action="/authenticate" method="post">
-    <input id="email" type="email" placeholder="メールアドレス" class="form-control">
-    <input id="password" type="password" placeholder="パスワード" class="form-control">
+    <input id="email" type="email" placeholder="メールアドレス" class="form-control" name="email">
+    <input id="password" type="password" placeholder="パスワード" class="form-control" name="password">
     <button class="btn-login" type="submit">ログインする</button>
   </form>
 {{end}}

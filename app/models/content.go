@@ -6,11 +6,13 @@ import (
 )
 
 type Content struct {
-	ID        int
-	Content   string
-	UserID    int
-	ThreadID  int
-	CreatedAt time.Time
+	ID                int
+	Content           string
+	UserID            int
+	ThreadID          int
+	CreatedAt         time.Time
+	LoginUserID       int
+	ContentIDInThread int
 }
 
 func (u *User) CreateContent(content string, threadID int) (err error) {

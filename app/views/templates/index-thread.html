@@ -1,12 +1,14 @@
 {{define "content"}}
-<h2>スレッドタイトル</h2>
+<h2>{{.Title}}</h2>
 
 <div class="section-thread">
+  {{range .Contents}}
+  {{if eq .UserID .LoginUserID}}
   <div class="thread-content self-content">
-    <form action="">
-      <div class="content-name">1:テスト太郎 2022/08/10(月) 20:12:10</div>
+    <form role="form" action="/index/update/">
+      <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
       <p class="content-text">
-        <input type="text" value="これはテストです。自分のコンテントです。" class="form-control">
+        <input type="text" value="{{.Content}}" class="thread-form">
       </p>
       <div class="content-btn">
         <button type="submit" class="update-btn">編集</button>
@@ -14,64 +16,19 @@
       </div>
     </form>
   </div>
-
+  {{else if ne .UserID .LoginUserID}}
   <div class="thread-content">
-    <div class="content-name">2:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
+    <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
+    <p class="content-text">{{.Content}}</p>
   </div>
-  <div class="thread-content">
-    <div class="content-name">3:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">4:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-
-  <div class="thread-content self-content">
-    <form action="">
-      <div class="content-name">1:テスト太郎 2022/08/10(月) 20:12:10</div>
-      <p class="content-text">
-        <input type="text" value="これはテストです。自分のコンテントです。" class="form-control">
-      </p>
-      <div class="content-btn">
-        <button type="submit" class="update-btn">編集</button>
-        <button type="submit" class="delete-btn">削除</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
+  {{end}}
+  {{end}}
 </div>
 
-<form class="form-newcontent" role="form" action="/index/create" method="post">
-  名前
-  <input type="text" name="name" value="名無しのプー太郎">
-  テキスト
-  <textarea class="new-content-text" type="" name="text" placeholder="">ここにテキストを入力してね</textarea>
+<h2>会話に参加する</h2>
+<form class="form-newcontent" role="form" action="/index/create/{{.LoginUserID}}" method="post">
+  <textarea class="new-content-text" name="content" id="content">ここにテキストを入力してね。</textarea>
+  <input type="hidden" name="id" value="{{.ID}}">
   <button type="submit" class="create-btn">投稿する</button>
 </form>
 {{end}}
