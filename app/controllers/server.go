@@ -83,6 +83,7 @@ func StartMainServer() error {
 	http.HandleFunc("/index", index)
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/index/thread/", parseURL(indexThread))
+	http.HandleFunc("/index/newthread", ThreadNew)
 	http.HandleFunc("/index/create/", parseURL(contentNew))
 	http.HandleFunc("/index/update/", parseURL(contentUpdate))
 	http.HandleFunc("/index/delete/", parseURL(contentDelete))

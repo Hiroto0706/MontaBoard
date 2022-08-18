@@ -25,8 +25,8 @@
   {{end}}
 </div>
 
-<h2>会話に参加する</h2>
 <form class="form-newcontent" role="form" action="/index/create/{{.LoginUserID}}" method="post">
+  <h2>会話に参加する</h2>
   <textarea class="new-content-text" name="content" id="content">ここにテキストを入力してね。</textarea>
   <input type="hidden" name="id" value="{{.ID}}">
   <button type="submit" class="create-btn">投稿する</button>

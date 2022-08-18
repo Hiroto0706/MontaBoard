@@ -7,4 +7,11 @@
     </li>
     {{end}}
   </ul>
+
+  <form class="form-newcontent" role="form" action="/index/newthread" method="post">
+    <h2>新しいスレッドを作成する</h2>
+    スレッドタイトル
+    <input class="new-thread" name="title" id="title" value="一緒に語ろうぜ">
+    <button type="submit" class="create-btn">作成する</button>
+  </form>
 {{end}}

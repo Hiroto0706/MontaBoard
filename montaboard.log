@@ -1,0 +1,244 @@
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56952: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 6 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000192f00})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000192f00})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x14000173500}, {0x103267620, 0x1400043f200}, {0x1400031b468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x14000173500}, 0x140001dc600)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x14000173500}, 0x140001dc600)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x14000173500}, 0x140001dc600)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x14000173500}, 0x140001dc600)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400011f180, {0x103284720, 0x1400002a640})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56951: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 5 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000450ad0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000450ad0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001ac620}, {0x103267620, 0x140001b9480}, {0x1400042d468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001ac620}, 0x14000444500)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001ac620}, 0x14000444500)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001ac620}, 0x14000444500)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001ac620}, 0x14000444500)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400011f0e0, {0x103284720, 0x14000190000})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56974: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 121 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000090180})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000090180})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140000be8c0}, {0x103267620, 0x140001b8100}, {0x140000fd468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140000be8c0}, 0x140000af200)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140000be8c0}, 0x140000af200)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140000be8c0}, 0x140000af200)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140000be8c0}, 0x140000af200)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140000e00a0, {0x103284720, 0x140000934c0})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56975: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 123 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x140000904a0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x140000904a0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001ac000}, {0x103267620, 0x140000a2500}, {0x140000fd468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001ac000}, 0x140000ae000)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001ac000}, 0x140000ae000)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001ac000}, 0x140000ae000)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001ac000}, 0x140000ae000)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140001e80a0, {0x103284720, 0x1400041e000})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56976: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 218 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000450070})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000450070})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001ac0e0}, {0x103267620, 0x140000a2b00}, {0x140000fd468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001ac0e0}, 0x14000444000)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001ac0e0}, 0x14000444000)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001ac0e0}, 0x14000444000)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001ac0e0}, 0x14000444000)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140000e0140, {0x103284720, 0x14000092140})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:44 server.go:3197: http: panic serving [::1]:56977: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 246 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000192780})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000192780})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140000be000}, {0x103267620, 0x140001b8780}, {0x140000f9468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140000be000}, 0x1400012c000)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140000be000}, 0x1400012c000)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140000be000}, 0x1400012c000)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140000be000}, 0x1400012c000)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400011e0a0, {0x103284720, 0x14000190500})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:45 server.go:3197: http: panic serving [::1]:56978: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 259 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000450210})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000450210})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001ac1c0}, {0x103267620, 0x140000a3380}, {0x140000eb468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001ac1c0}, 0x14000444100)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001ac1c0}, 0x14000444100)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001ac1c0}, 0x14000444100)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001ac1c0}, 0x14000444100)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140000e01e0, {0x103284720, 0x14000092900})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:46 server.go:3197: http: panic serving [::1]:56979: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 260 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000450260})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000450260})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140000be0e0}, {0x103267620, 0x140001b8f80}, {0x140000eb468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140000be0e0}, 0x14000444200)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140000be0e0}, 0x14000444200)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140000be0e0}, 0x14000444200)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140000be0e0}, 0x14000444200)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140000e0280, {0x103284720, 0x14000092980})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:46 server.go:3197: http: panic serving [::1]:56980: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 252 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x140004506d0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x140004506d0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001720e0}, {0x103267620, 0x1400043e600}, {0x140000eb468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001720e0}, 0x1400012c200)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001720e0}, 0x1400012c200)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001720e0}, 0x1400012c200)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001720e0}, 0x1400012c200)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x1400011e1e0, {0x103284720, 0x14000190a80})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:46 server.go:3197: http: panic serving [::1]:56981: template: side-menu-if-login.html:11: unexpected <if> in input
+goroutine 275 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000450b80})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000450b80})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001721c0}, {0x103267620, 0x1400043ec00}, {0x140000eb468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001721c0}, 0x140000ae100)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001721c0}, 0x140000ae100)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001721c0}, 0x140000ae100)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001721c0}, 0x140000ae100)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140001e8140, {0x103284720, 0x1400041e740})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:20:51 server.go:3197: http: panic serving [::1]:56982: template: side-menu-if-login.html:40: unexpected EOF
+goroutine 281 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1825 +0x11c
+panic({0x103228000, 0x14000192bb0})
+	/usr/local/go/src/runtime/panic.go:844 +0x26c
+text/template.Must(0x0, {0x103282108, 0x14000192bb0})
+	/usr/local/go/src/text/template/helper.go:25 +0x88
+monta-channel/app/controllers.generateHTML({0x103284540, 0x140001ac2a0}, {0x103267620, 0x140000a3900}, {0x140000e7468, 0x4, 0x4})
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/server.go:19 +0xdc
+monta-channel/app/controllers.index({0x103284540, 0x140001ac2a0}, 0x14000444300)
+	/Users/hirotokadota/go/src/monta-channel/app/controllers/route_main.go:83 +0x404
+net/http.HandlerFunc.ServeHTTP(0x1032803b8, {0x103284540, 0x140001ac2a0}, 0x14000444300)
+	/usr/local/go/src/net/http/server.go:2084 +0x48
+net/http.(*ServeMux).ServeHTTP(0x103474680, {0x103284540, 0x140001ac2a0}, 0x14000444300)
+	/usr/local/go/src/net/http/server.go:2462 +0x134
+net/http.serverHandler.ServeHTTP({0x14000172000}, {0x103284540, 0x140001ac2a0}, 0x14000444300)
+	/usr/local/go/src/net/http/server.go:2916 +0x424
+net/http.(*conn).serve(0x140001e81e0, {0x103284720, 0x14000092d40})
+	/usr/local/go/src/net/http/server.go:1966 +0x1510
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3071 +0x800
+2022/08/18 11:24:43 route_auth.go:95: sql: no rows in result set
+2022/08/18 11:24:43 server.go:3197: http: superfluous response.WriteHeader call from monta-channel/app/controllers.authenticate (route_auth.go:114)

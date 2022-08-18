@@ -207,3 +207,22 @@ func contentDelete(w http.ResponseWriter, r *http.Request, id int) {
 		indexThread(w, r, content.ThreadID)
 	}
 }
+
+func ThreadNew(w http.ResponseWriter, r *http.Request) {
+	_, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+		}
+
+		err = models.CreateThread(r.PostFormValue("title"))
+		if err != nil {
+			log.Println(err)
+		}
+
+		http.Redirect(w, r, "/index", 302)
+	}
+}
