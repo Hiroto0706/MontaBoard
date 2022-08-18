@@ -1,49 +1,21 @@
 {{define "content"}}
-<h2>スレッドタイトル</h2>
+<h2>{{.Title}}</h2>
+
 <div class="section-thread">
+  {{range .Contents}}
   <div class="thread-content">
-    <div class="content-name">1:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。自分のコンテントです。</p>
+    <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
+    <p class="content-text">{{.Content}}</p>
   </div>
-  <div class="thread-content">
-    <div class="content-name">2:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">3:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">4:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。自分のコンテントです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
-  </div>
-  <div class="thread-content">
-    <div class="content-name">5:テスト太郎 2022/08/10(月) 20:12:10</div>
-    <p class="content-text">これはテストです。</p>
+  {{end}}
+  <div class="induction-text">
+    <p>
+      会話に参加したい人はログインか登録してね！
+    </p>
+    <div class="induction-btn">
+      <a href="/login" class="login">ログイン</a>
+      <a href="/signup" class="signup">登録する</a>
+    </div>
   </div>
 </div>
 {{end}}

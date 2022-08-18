@@ -16,8 +16,14 @@ func top(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
+		newThreads, err := models.GetNewThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
+
 		indexThreads := models.Thread{}
 		indexThreads.Threads = threads
+		indexThreads.NewThreads = newThreads
 
 		generateHTML(w, indexThreads, "layout", "top", "side-btn-if-not-login", "side-menu")
 	} else {
@@ -25,8 +31,36 @@ func top(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func thread(w http.ResponseWriter, r *http.Request) {
-	generateHTML(w, nil, "layout", "thread", "side-btn-if-not-login", "side-menu")
+func thread(w http.ResponseWriter, r *http.Request, id int) {
+	thread, err := models.GetThread(id)
+	if err != nil {
+		log.Println(err)
+	}
+
+	threads, err := models.GetThreads()
+	if err != nil {
+		log.Println(err)
+	}
+
+	contents, err := models.GetContentsByThreadID(id)
+	if err != nil {
+		log.Println(err)
+	}
+
+	for i, _ := range contents {
+		contents[i].ContentIDInThread = i + 1
+	}
+
+	newThreads, err := models.GetNewThreadsLimitFive()
+	if err != nil {
+		log.Println(err)
+	}
+
+	thread.Contents = contents
+	thread.Threads = threads
+	thread.NewThreads = newThreads
+
+	generateHTML(w, thread, "layout", "side-btn-if-not-login", "side-menu", "thread")
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -38,15 +72,15 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		// newThreads, err := models.GetNewThreadsLimitFive()
+		newThreads, err := models.GetNewThreadsLimitFive()
 		if err != nil {
 			log.Println(err)
 		}
 		indexThreads := models.Thread{}
 		indexThreads.Threads = threads
-		// indexThreads.NewThreads = newThreads
+		indexThreads.NewThreads = newThreads
 
-		generateHTML(w, indexThreads, "layout", "index", "side-btn-if-login", "side-menu")
+		generateHTML(w, indexThreads, "layout", "index", "side-btn-if-login", "side-menu-if-login")
 	}
 }
 
@@ -81,11 +115,17 @@ func indexThread(w http.ResponseWriter, r *http.Request, id int) {
 			contents[i].ContentIDInThread = i + 1
 		}
 
+		newThreads, err := models.GetNewThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
+
 		thread.Contents = contents
 		thread.Threads = threads
 		thread.LoginUserID = loginUserId
+		thread.NewThreads = newThreads
 
-		generateHTML(w, thread, "layout", "side-btn-if-login", "side-menu", "index-thread")
+		generateHTML(w, thread, "layout", "side-btn-if-login", "side-menu-if-login", "index-thread")
 	}
 }
 
@@ -120,18 +160,50 @@ func contentNew(w http.ResponseWriter, r *http.Request, userId int) {
 	}
 }
 
-// func contentUpdate(w http.ResponseWriter, r *http.Request, id int){
-// 	sess, err := session(w, r)
-// 	if err != nil {
-// 		http.Redirect(w, r, "/login", 302)
-// 	}else {
-// 		_, err := sess.GetUserBySession()
-// 		if err != nil {
-// 			log.Println(err)
-// 		}
-// 		content, err := models.GetContent(id)
-// 		if err != nil {
-// 			log.Println(err)
-// 		}
-// 	}
-// }
+func contentUpdate(w http.ResponseWriter, r *http.Request, id int) {
+	_, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+		}
+
+		content, err := models.GetContent(id)
+		if err != nil {
+			log.Println(err)
+		}
+
+		content.Content = r.PostFormValue("content")
+		err = content.UpdateContent()
+		if err != nil {
+			log.Println(err)
+		}
+
+		indexThread(w, r, content.ThreadID)
+	}
+}
+
+func contentDelete(w http.ResponseWriter, r *http.Request, id int) {
+	_, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+		}
+
+		content, err := models.GetContent(id)
+		if err != nil {
+			log.Println(err)
+		}
+		err = content.DeleteContent()
+		if err != nil {
+			log.Println(err)
+		}
+
+		indexThread(w, r, content.ThreadID)
+	}
+}

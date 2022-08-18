@@ -1,9 +1,9 @@
 {{define "side-menu"}}
 <h4>新しいスレッド</h4>
 <ul>
-  {{range .Threads}}
+  {{range .NewThreads}}
     <li>
-      <a href="">
+      <a href="/thread/{{.ID}}">
         {{.Title}}
       </a>
     </li>
@@ -19,7 +19,7 @@
     </li>
   {{end}}
 </ul> -->
-<div class="categories">
+<!-- <div class="categories">
   <h4>カテゴリー一覧</h4>
   <ul>
     <li><a href="">カテゴリー1</a></li>
@@ -33,5 +33,5 @@
     <li><a href="">カテゴリー9</a></li>
     <li><a href="">カテゴリー10</a></li>
   </ul>
-</div>
+</div> -->
 {{end}}

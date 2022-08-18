@@ -10,7 +10,20 @@ func signup(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		_, err := session(w, r)
 		if err != nil {
-			generateHTML(w, nil, "layout", "signup", "side-btn-if-not-login", "side-menu")
+			threads, err := models.GetThreads()
+			if err != nil {
+				log.Println(err)
+			}
+			newThreads, err := models.GetNewThreadsLimitFive()
+			if err != nil {
+				log.Println(err)
+			}
+
+			indexThreads := models.Thread{}
+			indexThreads.Threads = threads
+			indexThreads.NewThreads = newThreads
+
+			generateHTML(w, indexThreads, "layout", "signup", "side-btn-if-not-login", "side-menu")
 		} else {
 			http.Redirect(w, r, "/index", 302)
 		}
@@ -57,7 +70,19 @@ func signup(w http.ResponseWriter, r *http.Request) {
 func login(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {
-		generateHTML(w, nil, "layout", "login", "side-btn-if-not-login", "side-menu")
+		threads, err := models.GetThreads()
+		if err != nil {
+			log.Println(err)
+		}
+		newThreads, err := models.GetNewThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
+
+		indexThreads := models.Thread{}
+		indexThreads.Threads = threads
+		indexThreads.NewThreads = newThreads
+		generateHTML(w, indexThreads, "layout", "login", "side-btn-if-not-login", "side-menu")
 	} else {
 		http.Redirect(w, r, "/index", 302)
 	}

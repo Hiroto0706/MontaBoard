@@ -22,8 +22,6 @@ func (u *User) CreateContent(content string, threadID int) (err error) {
 		thread_id,
 		created_at) values (?, ?, ?, ?)`
 
-	log.Println(u.ID)
-
 	_, err = Db.Exec(cmd, content, u.ID, threadID, time.Now())
 
 	if err != nil {
@@ -74,8 +72,8 @@ func GetContentsByThreadID(id int) (contents []Content, err error) {
 }
 
 func (c *Content) UpdateContent() (err error) {
-	cmd := `update contents set content = ? where user_id = ?`
-	_, err = Db.Exec(cmd, c.Content, c.UserID)
+	cmd := `update contents set content = ? where id = ?`
+	_, err = Db.Exec(cmd, c.Content, c.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

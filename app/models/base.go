@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"monta-channel/config"
-	"time"
 
 	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
@@ -73,21 +72,21 @@ func init() {
 
 	Db.Exec(cmdS)
 
-	cmd := `insert into users (uuid, name, email, password, created_at) values (?, ?, ?, ?, ?)`
+	// cmd := `insert into users (uuid, name, email, password, created_at) values (?, ?, ?, ?, ?)`
 
-	Db.Exec(cmd, createUUID(), "ジョルノジョバァーナ", "test@test.com", Encrypt("password"), time.Now())
+	// Db.Exec(cmd, createUUID(), "ジョルノジョバァーナ", "test@test.com", Encrypt("password"), time.Now())
 
-	cmd = `insert into threads (title, created_at) values (?, ?)`
+	// cmd = `insert into threads (title, created_at) values (?, ?)`
 
-	Db.Exec(cmd, "門田拓大ってやつさぁwwwwwwwww", time.Now())
+	// Db.Exec(cmd, "門田拓大ってやつさぁwwwwwwwww", time.Now())
 
-	cmd = `insert into contents (content, user_id, thread_id, created_at) values (?, ?, ?, ?)`
+	// cmd = `insert into contents (content, user_id, thread_id, created_at) values (?, ?, ?, ?)`
 
-	Db.Exec(cmd, "それは草", 2, 2, time.Now())
+	// Db.Exec(cmd, "それは草", 2, 2, time.Now())
 
-	cmd = `insert into categories (name, thread_id, created_at) values (?, ?, ?)`
+	// cmd = `insert into categories (name, thread_id, created_at) values (?, ?, ?)`
 
-	Db.Exec(cmd, "カテゴリー1", 1, time.Now())
+	// Db.Exec(cmd, "カテゴリー1", 1, time.Now())
 }
 
 func createUUID() (uuidobj uuid.UUID) {

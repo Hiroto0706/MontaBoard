@@ -1,0 +1,37 @@
+{{define "side-menu"}}
+<h4>新しいスレッド</h4>
+<ul>
+  {{range .NewThreads}}
+    <li>
+      <a href="/index/thread/{{.ID}}">
+        {{.Title}}
+      </a>
+    </li>
+  {{end}}
+</ul>
+<!-- <h4>人気のスレッド</h4>
+<ul>
+  {{range .Threads}}
+    <li>
+      <a href="">
+        {{.Title}}
+      </a>
+    </li>
+  {{end}}
+</ul> -->
+<div class="categories">
+  <h4>カテゴリー一覧</h4>
+  <ul>
+    <li><a href="">カテゴリー1</a></li>
+    <li><a href="">カテゴリー2</a></li>
+    <li><a href="">カテゴリー3</a></li>
+    <li><a href="">カテゴリー4</a></li>
+    <li><a href="">カテゴリー5</a></li>
+    <li><a href="">カテゴリー6</a></li>
+    <li><a href="">カテゴリー7</a></li>
+    <li><a href="">カテゴリー8</a></li>
+    <li><a href="">カテゴリー9</a></li>
+    <li><a href="">カテゴリー10</a></li>
+  </ul>
+</div>
+{{end}}

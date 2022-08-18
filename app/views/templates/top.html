@@ -2,11 +2,19 @@
 <h2>スレッド一覧</h2>
   <ul class="threads">
     {{range .Threads}}
-      <li>
-        <a href="/thread">
-          {{.Title}}
-        </a>
-      </li>
+    <li>
+      {{.ID}}:<a href="/thread/{{.ID}}">{{.Title}}</a>
+    </li>
     {{end}}
   </ul>
+
+  <div class="induction-text">
+    <p>
+      スレッドを作成したい人はログインか登録してね！
+    </p>
+    <div class="induction-btn">
+      <a href="/login" class="login">ログイン</a>
+      <a href="/signup" class="signup">登録する</a>
+    </div>
+  </div>
 {{end}}

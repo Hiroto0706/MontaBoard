@@ -5,14 +5,14 @@
   {{range .Contents}}
   {{if eq .UserID .LoginUserID}}
   <div class="thread-content self-content">
-    <form role="form" action="/index/update/">
+    <form role="form" action="" method="POST">
       <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
       <p class="content-text">
-        <input type="text" value="{{.Content}}" class="thread-form">
+        <input type="text" value="{{.Content}}" class="thread-form" name="content">
       </p>
       <div class="content-btn">
-        <button type="submit" class="update-btn">編集</button>
-        <button type="submit" class="delete-btn">削除</button>
+        <button type="submit" class="update-btn content-btn" data-action="/index/update/{{.ID}}">編集</button>
+        <button type="submit" class="delete-btn content-btn" data-action="/index/delete/{{.ID}}">削除</button>
       </div>
     </form>
   </div>

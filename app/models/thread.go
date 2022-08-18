@@ -15,6 +15,13 @@ type Thread struct {
 	LoginUserID int
 }
 
+type Category struct {
+	ID        int
+	Name      string
+	ThreadID  int
+	CreatedAt time.Time
+}
+
 func CreateThread(title string) (err error) {
 	cmd := `insert into threads (
 		title,
@@ -65,31 +72,31 @@ func GetThreads() (threads []Thread, err error) {
 	return threads, err
 }
 
-// func GetNewThreadsLimitFive() (threads []Thread, err error) {
-// 	cmd := `select id, title, created_at form threads order by created_at desc limit 5`
+func GetNewThreadsLimitFive() (threads []Thread, err error) {
+	cmd := `select id, title, created_at from threads order by created_at desc limit 5`
 
-// 	rows, err := Db.Query(cmd)
-// 	if err != nil {
-// 		log.Println(err)
-// 	}
+	rows, err := Db.Query(cmd)
+	if err != nil {
+		log.Println(err)
+	}
 
-// 	for rows.Next() {
-// 		var thread Thread
-// 		err = rows.Scan(
-// 			&thread.ID,
-// 			&thread.Title,
-// 			&thread.CreatedAt)
+	for rows.Next() {
+		var thread Thread
+		err = rows.Scan(
+			&thread.ID,
+			&thread.Title,
+			&thread.CreatedAt)
 
-// 		if err != nil {
-// 			log.Println(err)
-// 		}
+		if err != nil {
+			log.Println(err)
+		}
 
-// 		threads = append(threads, thread)
-// 	}
-// 	rows.Close()
+		threads = append(threads, thread)
+	}
+	rows.Close()
 
-// 	return threads, err
-// }
+	return threads, err
+}
 
 func (t *Thread) UpdataThread() (err error) {
 	cmd := `update threads set title = ? where id = ?`
