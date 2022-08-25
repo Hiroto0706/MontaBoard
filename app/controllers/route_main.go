@@ -21,11 +21,23 @@ func top(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 
-		indexThreads := models.Thread{}
-		indexThreads.Threads = threads
-		indexThreads.NewThreads = newThreads
+		popularThreads, err := models.GetPopularThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
 
-		generateHTML(w, indexThreads, "layout", "top", "side-btn-if-not-login", "side-menu")
+		categories, err := models.GetCatetories()
+		if err != nil {
+			log.Println(err)
+		}
+
+		thread := models.Thread{}
+		thread.Threads = threads
+		thread.NewThreads = newThreads
+		thread.Categories = categories
+		thread.PopularThreads = popularThreads
+
+		generateHTML(w, thread, "layout", "top", "side-btn-if-not-login", "side-menu")
 	} else {
 		http.Redirect(w, r, "/index", 302)
 	}
@@ -56,9 +68,21 @@ func thread(w http.ResponseWriter, r *http.Request, id int) {
 		log.Println(err)
 	}
 
+	popularThreads, err := models.GetPopularThreadsLimitFive()
+	if err != nil {
+		log.Println(err)
+	}
+
+	categories, err := models.GetCatetories()
+	if err != nil {
+		log.Println(err)
+	}
+
 	thread.Contents = contents
 	thread.Threads = threads
 	thread.NewThreads = newThreads
+	thread.PopularThreads = popularThreads
+	thread.Categories = categories
 
 	generateHTML(w, thread, "layout", "side-btn-if-not-login", "side-menu", "thread")
 }
@@ -76,11 +100,22 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		indexThreads := models.Thread{}
-		indexThreads.Threads = threads
-		indexThreads.NewThreads = newThreads
 
-		generateHTML(w, indexThreads, "layout", "index", "side-btn-if-login", "side-menu-if-login")
+		categories, err := models.GetCatetories()
+		if err != nil {
+			log.Println(err)
+		}
+		popularThreads, err := models.GetPopularThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
+		thread := models.Thread{}
+		thread.Threads = threads
+		thread.NewThreads = newThreads
+		thread.Categories = categories
+		thread.PopularThreads = popularThreads
+
+		generateHTML(w, thread, "layout", "index", "side-btn-if-login", "side-menu-if-login")
 	}
 }
 
@@ -120,10 +155,21 @@ func indexThread(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 
+		categories, err := models.GetCatetories()
+		if err != nil {
+			log.Println(err)
+		}
+		popularThreads, err := models.GetPopularThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
+
 		thread.Contents = contents
 		thread.Threads = threads
 		thread.LoginUserID = loginUserId
 		thread.NewThreads = newThreads
+		thread.Categories = categories
+		thread.PopularThreads = popularThreads
 
 		generateHTML(w, thread, "layout", "side-btn-if-login", "side-menu-if-login", "index-thread")
 	}

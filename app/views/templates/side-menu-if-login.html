@@ -11,29 +11,25 @@
 
 
 </ul>
-<!-- <h4>人気のスレッド</h4>
+<h4>人気のスレッド</h4>
 <ul>
-  {{range .Threads}}
+  {{range .PopularThreads}}
     <li>
-      <a href="">
+      <a href="/index/thread/{{.ID}}">
         {{.Title}}
       </a>
     </li>
   {{end}}
-</ul> -->
+</ul>
+
 <!-- <div class="categories">
   <h4>カテゴリー一覧</h4>
   <ul>
-    <li><a href="">カテゴリー1</a></li>
-    <li><a href="">カテゴリー2</a></li>
-    <li><a href="">カテゴリー3</a></li>
-    <li><a href="">カテゴリー4</a></li>
-    <li><a href="">カテゴリー5</a></li>
-    <li><a href="">カテゴリー6</a></li>
-    <li><a href="">カテゴリー7</a></li>
-    <li><a href="">カテゴリー8</a></li>
-    <li><a href="">カテゴリー9</a></li>
-    <li><a href="">カテゴリー10</a></li>
+    {{range .Categories}}
+    <li>
+      <a href="">{{.Name}}</a>
+    </li>
+    {{end}}
   </ul>
 </div> -->
 {{end}}

@@ -19,11 +19,17 @@ func signup(w http.ResponseWriter, r *http.Request) {
 				log.Println(err)
 			}
 
-			indexThreads := models.Thread{}
-			indexThreads.Threads = threads
-			indexThreads.NewThreads = newThreads
+			popularThreads, err := models.GetPopularThreadsLimitFive()
+			if err != nil {
+				log.Println(err)
+			}
 
-			generateHTML(w, indexThreads, "layout", "signup", "side-btn-if-not-login", "side-menu")
+			thread := models.Thread{}
+			thread.Threads = threads
+			thread.NewThreads = newThreads
+			thread.PopularThreads = popularThreads
+
+			generateHTML(w, thread, "layout", "signup", "side-btn-if-not-login", "side-menu")
 		} else {
 			http.Redirect(w, r, "/index", 302)
 		}
@@ -78,11 +84,16 @@ func login(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
+		popularThreads, err := models.GetPopularThreadsLimitFive()
+		if err != nil {
+			log.Println(err)
+		}
 
-		indexThreads := models.Thread{}
-		indexThreads.Threads = threads
-		indexThreads.NewThreads = newThreads
-		generateHTML(w, indexThreads, "layout", "login", "side-btn-if-not-login", "side-menu")
+		thread := models.Thread{}
+		thread.Threads = threads
+		thread.NewThreads = newThreads
+		thread.PopularThreads = popularThreads
+		generateHTML(w, thread, "layout", "login", "side-btn-if-not-login", "side-menu")
 	} else {
 		http.Redirect(w, r, "/index", 302)
 	}

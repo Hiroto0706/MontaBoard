@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"monta-channel/config"
+	"time"
 
 	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
@@ -41,7 +42,8 @@ func init() {
 
 	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		Title STRING,
+		title STRING,
+		category_id int,
 		created_at DATETIME)`, tableNameThread)
 
 	Db.Exec(cmdT)
@@ -58,7 +60,6 @@ func init() {
 	cmdCate := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			name STRING,
-			thread_id INTEGER,
 			created_at DATETIME)`, tableNameCategory)
 
 	Db.Exec(cmdCate)
@@ -72,21 +73,22 @@ func init() {
 
 	Db.Exec(cmdS)
 
-	// cmd := `insert into users (uuid, name, email, password, created_at) values (?, ?, ?, ?, ?)`
+	cmd := fmt.Sprintf(`insert into %s (name, created_at) values (?, ?)`, tableNameCategory)
 
-	// Db.Exec(cmd, createUUID(), "ジョルノジョバァーナ", "test@test.com", Encrypt("password"), time.Now())
-
-	// cmd = `insert into threads (title, created_at) values (?, ?)`
-
-	// Db.Exec(cmd, "門田拓大ってやつさぁwwwwwwwww", time.Now())
-
-	// cmd = `insert into contents (content, user_id, thread_id, created_at) values (?, ?, ?, ?)`
-
-	// Db.Exec(cmd, "それは草", 2, 2, time.Now())
-
-	// cmd = `insert into categories (name, thread_id, created_at) values (?, ?, ?)`
-
-	// Db.Exec(cmd, "カテゴリー1", 1, time.Now())
+	Db.Exec(cmd, "漫画", time.Now())
+	Db.Exec(cmd, "スポーツ", time.Now())
+	Db.Exec(cmd, "健康・食事", time.Now())
+	Db.Exec(cmd, "社会・経済", time.Now())
+	Db.Exec(cmd, "エンターテイメント", time.Now())
+	Db.Exec(cmd, "お金", time.Now())
+	Db.Exec(cmd, "仕事", time.Now())
+	Db.Exec(cmd, "インターネット", time.Now())
+	Db.Exec(cmd, "趣味", time.Now())
+	Db.Exec(cmd, "恋愛・結婚", time.Now())
+	Db.Exec(cmd, "ファッション", time.Now())
+	Db.Exec(cmd, "生活", time.Now())
+	Db.Exec(cmd, "旅行・観光", time.Now())
+	Db.Exec(cmd, "その他", time.Now())
 }
 
 func createUUID() (uuidobj uuid.UUID) {
