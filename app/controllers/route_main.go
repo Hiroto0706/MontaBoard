@@ -124,10 +124,7 @@ func indexThread(w http.ResponseWriter, r *http.Request, id int) {
 	if err != nil {
 		http.Redirect(w, r, "/login", 302)
 	} else {
-		thread, err := models.GetThread(id)
-		if err != nil {
-			log.Println(err)
-		}
+		thread, _ := models.GetThread(id)
 
 		threads, err := models.GetThreads()
 		if err != nil {
@@ -215,8 +212,6 @@ func contentUpdate(w http.ResponseWriter, r *http.Request, id int) {
 		if err != nil {
 			log.Println(err)
 		}
-
-		log.Println("update")
 
 		content, err := models.GetContent(id)
 		if err != nil {
