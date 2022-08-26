@@ -216,6 +216,8 @@ func contentUpdate(w http.ResponseWriter, r *http.Request, id int) {
 			log.Println(err)
 		}
 
+		log.Println("update")
+
 		content, err := models.GetContent(id)
 		if err != nil {
 			log.Println(err)

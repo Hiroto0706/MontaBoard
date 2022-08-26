@@ -11,8 +11,8 @@
         <input type="text" value="{{.Content}}" class="thread-form" name="content">
       </p>
       <div class="content-btn">
-        <button type="submit" class="update-btn content-btn" id="update-btn" data-action="/index/update/{{.ID}}">編集</button>
-        <button type="submit" class="delete-btn content-btn" id="delete-btn" data-action="/index/delete/{{.ID}}">削除</button>
+        <button type="submit" class="update-btn content-btn" data-action="/index/update/{{.ID}}" data-id="update">編集</button>
+        <button type="submit" class="delete-btn content-btn" data-action="/index/delete/{{.ID}}" data-id="delete">削除</button>
       </div>
     </form>
   </div>
@@ -43,26 +43,5 @@
       }
   });
 
-  $('#update-btn').click(function(){
-        if(!confirm('この内容で更新してもよろしいですか？')){
-            /* キャンセルの時の処理 */
-            return false;
-        }else{
-            /*OKの時の処理 */
-            $(this).parents('form').attr('action', $(this).data('action'));
-            $(this).parents('form').submit();
-        }
-    });
-
-    $('#delete-btn').click(function(){
-        if(!confirm('この投稿を削除してもよろしいですか？')){
-            /* キャンセルの時の処理 */
-            return false;
-        }else{
-            /*OKの時の処理 */
-            $(this).parents('form').attr('action', $(this).data('action'));
-            $(this).parents('form').submit();
-        }
-    });
   </script>
 {{end}}
