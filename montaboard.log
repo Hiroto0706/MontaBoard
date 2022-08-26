@@ -1,0 +1,4 @@
+2022/08/26 22:07:46 route_auth.go:106: sql: no rows in result set
+2022/08/26 22:07:46 server.go:3197: http: superfluous response.WriteHeader call from monta-channel/app/controllers.authenticate (route_auth.go:125)
+2022/08/26 22:07:51 route_auth.go:106: sql: no rows in result set
+2022/08/26 22:07:51 server.go:3197: http: superfluous response.WriteHeader call from monta-channel/app/controllers.authenticate (route_auth.go:125)
