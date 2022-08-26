@@ -1,3 +1,14 @@
 {{define "side-btn"}}
-<a href="/logout" class="logout">ログアウト</a>
+<a href="/logout" class="logout" id="logout-btn">ログアウト</a>
+<script>
+  $('#logout-btn').click(function(){
+      if(!confirm('本当にログアウトしてよろしいですか？')){
+          /* キャンセルの時の処理 */
+          return false;
+      }else{
+          /*OKの時の処理 */
+          location.href = '/logout';
+      }
+  });
+  </script>
 {{end}}

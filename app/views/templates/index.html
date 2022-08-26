@@ -3,7 +3,7 @@
   <ul class="threads">
     {{range .Threads}}
     <li>
-      {{.ID}}:<a href="/index/thread/{{.ID}}">{{.Title}}</a>
+      {{.ID}} : <a href="/index/thread/{{.ID}}">{{.Title}}</a>
     </li>
     {{end}}
   </ul>
@@ -12,6 +12,18 @@
     <h2>新しいスレッドを作成する</h2>
     スレッドタイトル
     <input class="new-thread" name="title" id="title" value="一緒に語ろうぜ">
-    <button type="submit" class="create-btn">作成する</button>
+    <button type="submit" class="create-btn" id="create-thread-btn">作成する</button>
   </form>
+
+  <script>
+    $('#create-thread-btn').click(function(){
+        if(!confirm('本当にこのスレッドを作成して大丈夫ですか？')){
+            /* キャンセルの時の処理 */
+            return false;
+        }else{
+            /*OKの時の処理 */
+            $(this).parents('form').submit();
+        }
+    });
+    </script>
 {{end}}
