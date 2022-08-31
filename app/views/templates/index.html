@@ -1,5 +1,5 @@
 {{define "content"}}
-<h2>スレッド一覧（ログイン済み）</h2>
+<h2>スレッド一覧（ " {{.UserName}} " でログイン済み）</h2>
   <ul class="threads">
     {{range .Threads}}
     <li>
@@ -8,22 +8,125 @@
     {{end}}
   </ul>
 
-  <form class="form-newcontent" role="form" action="/index/newthread" method="post">
+  <form class="form-newcontent" role="form" method="post">
     <h2>新しいスレッドを作成する</h2>
-    スレッドタイトル
-    <input class="new-thread" name="title" id="title" value="一緒に語ろうぜ">
-    <button type="submit" class="create-btn" id="create-thread-btn">作成する</button>
+    <div class="form-group">
+      <div>スレッドタイトル</div>
+      <div class="err_text" id="err_textbox"></div>
+      <input type="text" class="new-thread" name="title" id="title" placeholder="タイトルを記入してください(30字以内)">
+      カテゴリー
+      <div class="err_text" id="err_category"></div>
+      <select name="categories" id="category-select">
+        <option value="">カテゴリーを選択してください。</option>
+        <option value="1">漫画</option>
+        <option value="2">スポーツ</option>
+        <option value="3">健康・食事</option>
+        <option value="4">社会・経済</option>
+        <option value="5">エンターテイメント</option>
+        <option value="6">お金</option>
+        <option value="7">仕事</option>
+        <option value="8">インターネット</option>
+        <option value="9">趣味</option>
+        <option value="10">恋愛・結婚</option>
+        <option value="11">ファッション</option>
+        <option value="12">生活</option>
+        <option value="13">旅行・観光</option>
+        <option value="14">その他</option>
+    </select>
+      <button type="submit" class="create-btn" id="create-thread-btn" onclick="do_submit(this);return false;">作成する</button>
+    </div>
   </form>
 
   <script>
-    $('#create-thread-btn').click(function(){
-        if(!confirm('本当にこのスレッドを作成して大丈夫ですか？')){
-            /* キャンセルの時の処理 */
-            return false;
-        }else{
-            /*OKの時の処理 */
-            $(this).parents('form').submit();
-        }
+    $(function(){
+      $("#title").bind("blur", function() {
+        var _textbox = $(this).val();
+        var result = check_textbox(_textbox);
+        // console.log(result);
+      });
     });
+    
+    function check_textbox(str){
+      $("#err_textbox p").remove();
+      var _result = true;
+      var _textbox = $.trim(str);
+      
+      if(_textbox.match(/^[ \r\n\t]*$/)){
+        $("#err_textbox").append("<p><i class=\"fa fa-exclamation-triangle\"></i>タイトルを記入してください</p>");
+        _result = false;
+      }else if(_textbox.length > 30){
+        $("#err_textbox").append("<p><i class=\"fa fa-exclamation-triangle\"></i>タイトルは30文字以内で入力してください。</p>");
+        _result = false;
+      }
+      return _result;
+    }
+
+    $(function(){
+      $("#category-select").bind("change blur", function(){
+        var _list_id = $(this).val();
+        check_list_id(_list_id);
+      });
+    });
+
+    function check_list_id(id){
+      $("#err_category p").remove();
+      var _result = true;
+      var _id = id;
+
+      if(!_id.match(/^[0-9]+$/)){
+        $("#err_category").append("<p><i class=\"fa fa-exclamation-triangle\"></i>カテゴリを選択してください。</p>");
+        _result = false;
+      }
+      return _result;
+    }
+    
+    function do_check() {
+      var result = true;
+      var check_result = true;
+      
+      // エラーメッセージ初期化
+      $(".err_text").empty();
+      
+      // テキストボックス
+      var _textbox = $("#title").val();
+      result = check_textbox(_textbox);
+      if(!result){
+        check_result = result;
+      }
+
+      // セレクトボックス
+      var _list_id = $("#category-select").val();
+      result = check_list_id(_list_id);
+      if(!result){
+        check_result = result;
+      }
+
+      console.log(result);
+      
+      return check_result;
+    }
+    
+    function do_submit(btn){
+      $(btn).css("pointer-events", "none");
+      var result = do_check();
+      
+      if(result){
+        if(!confirm('本当にこのスレッドを作成して大丈夫ですか？')){
+          /* キャンセルの時の処理 */
+          // console.log("canceled");
+          $(btn).css("pointer-events", "inherit");
+          return false;
+        }else{
+          /*OKの時の処理 */
+          // console.log("submit");
+          $('form').attr('action', "/index/newthread");
+          $('form').submit();
+        }
+      }else{
+        // console.log("end");
+        $(btn).css("pointer-events", "inherit");
+        return false;
+      }
+    }
     </script>
 {{end}}

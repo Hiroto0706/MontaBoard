@@ -13,6 +13,7 @@ type Content struct {
 	CreatedAt         time.Time
 	LoginUserID       int
 	ContentIDInThread int
+	UserName          string
 }
 
 func (u *User) CreateContent(content string, threadID int) (err error) {
@@ -100,3 +101,4 @@ func (t *Thread) DeleteContentsByThreadID() (err error) {
 
 	return err
 }
+

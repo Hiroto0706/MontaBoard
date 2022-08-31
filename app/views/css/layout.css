@@ -7,7 +7,8 @@ body {
 
 li {
   list-style: none;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
 }
 
 img {
@@ -21,7 +22,7 @@ img {
 
 /* top.htmlのcss */
 .wrapper {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   margin-bottom: 16px;
 }
@@ -108,7 +109,8 @@ img {
 }
 
 .content .main-content li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
 }
 
 /* side-menuのcss */
@@ -127,8 +129,9 @@ img {
   padding: 5% 5% 20% 5%;
 }
 
-.side-menu ul li {
-  margin-bottom: 4px;
+.popular-rank {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 /* footerのcss */
@@ -156,7 +159,7 @@ img {
 
 .thread-content {
   margin-bottom: 20px;
-  background-color: whitesmoke;
+  background-color: rgb(240, 240, 240);
   padding: 3%;
   border-radius: 20px;
   width: 90%;
@@ -164,6 +167,11 @@ img {
 
 .content-name {
   font-size: 0.8rem;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .content-text {
@@ -260,9 +268,21 @@ img {
   margin-bottom: 10px;
 }
 
+.form-newcontent .form-group {
+  padding: 1% 3%;
+}
+
 .new-thread {
   width: 100%;
   /* display: block; */
+  border: solid 1px black;
+  padding: 0.6%;
+  margin-bottom: 20px;
+}
+
+#category-select {
+  width: 100%;
+  display: block;
   border: solid 1px black;
   padding: 0.6%;
   margin-bottom: 10px;
@@ -302,8 +322,8 @@ img {
   color: white;
   padding: 1%;
   border-radius: 20px;
-  display: inline-block;
-  margin-left: 87%;
+  display: block;
+  margin: 0 0 0 auto;
 }
 
 .content-btn {
@@ -327,10 +347,21 @@ img {
 .thread-form {
   width: 100%;
   display: block;
-  border: solid 1px black;
-  padding: 0.6%;
+  border-bottom: solid 1px black;
+  padding: 0.6% 0.6% 0 0.6%;
   margin-bottom: 8px;
-  background-color: white;
+  background-color: rgb(181, 255, 158);
+}
+
+.thread-title {
+  font-size: 2rem;
+  margin: 0 0 16px 0;
+}
+
+.category-span {
+  padding: 0.9% 1.5%;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
 }
 
 
@@ -342,4 +373,10 @@ img {
 .errors {
   color: red;
   font-size: 0.9rem;
+}
+
+.err_text {
+  color: red;
+  margin: 8px 0;
+  font-weight: bold;
 }

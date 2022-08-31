@@ -1,12 +1,13 @@
 {{define "content"}}
-<h2>{{.Title}}</h2>
+<h2 class="thread-title">{{.Title}}</h2>
+カテゴリー : <span class="category-span">{{.CategoryName}}</span>
 
 <div class="section-thread">
   {{range .Contents}}
   {{if eq .UserID .LoginUserID}}
   <div class="thread-content self-content">
     <form role="form" action="" method="POST">
-      <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
+      <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
       <p class="content-text">
         <input type="text" value="{{.Content}}" class="thread-form" name="content">
       </p>
@@ -18,7 +19,7 @@
   </div>
   {{else if ne .UserID .LoginUserID}}
   <div class="thread-content">
-    <div class="content-name">{{.ContentIDInThread}} : 名無しのプー太郎 {{.CreatedAt}}</div>
+    <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
     <p class="content-text">{{.Content}}</p>
   </div>
   {{end}}

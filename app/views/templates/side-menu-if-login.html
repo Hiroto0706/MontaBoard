@@ -3,32 +3,40 @@
 <ul>
   {{range .NewThreads}}
     <li>
-      <a href="/index/thread/{{.ID}}">
-        ・{{.Title}}
-      </a>
+      ・<a href="/index/thread/{{.ID}}">{{.Title}}</a>
     </li>
   {{end}}
 </ul>
 
 <h4>人気のスレッド</h4>
-<ul>
-  {{range .PopularThreads}}
+<ul class="populars">
+  {{range $index, $thread := .PopularThreads}}
     <li>
-      <a href="/index/thread/{{.ID}}">
-        ・{{.Title}}
-      </a>
+      <span class="popular-rank">{{$index}}</span>位 : <a href="/index/thread/{{.ID}}">{{$thread.Title}}</a>
     </li>
   {{end}}
 </ul>
 
-<!-- <div class="categories">
+<div class="categories">
   <h4>カテゴリー一覧</h4>
   <ul>
     {{range .Categories}}
     <li>
-      <a href="">{{.Name}}</a>
+      ・<a href="">{{.Name}}</a>
     </li>
     {{end}}
   </ul>
-</div> -->
+</div>
+<script>
+  "user-strict";
+
+  $(function(){
+    for(i = 0; i < 5; i++){
+      var rank = parseInt($(".populars li span").eq(i).text());
+      rank = rank + 1;
+      console.log(rank);
+      $(".populars li span").eq(i).text(rank);
+    }
+  });
+</script>
 {{end}}

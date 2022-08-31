@@ -18,20 +18,17 @@ type Thread struct {
 	Contents       []Content
 	Categories     []Category
 	LoginUserID    int
+	CategoryName   string
+	UserName       string
 }
 
-type Category struct {
-	ID        int
-	Name      string
-	CreatedAt time.Time
-}
-
-func CreateThread(title string) (err error) {
+func CreateThread(title string, categoryID int) (err error) {
 	cmd := `insert into threads (
 		title,
-		created_at) values (?, ?)`
+		category_id,
+		created_at) values (?, ?, ?)`
 
-	_, err = Db.Exec(cmd, title, time.Now())
+	_, err = Db.Exec(cmd, title, categoryID, time.Now())
 
 	if err != nil {
 		log.Fatalln(err)
@@ -42,17 +39,18 @@ func CreateThread(title string) (err error) {
 
 func GetThread(id int) (thread Thread, err error) {
 	thread = Thread{}
-	cmd := `select id, title, created_at from threads where id = ?`
+	cmd := `select id, title, category_id, created_at from threads where id = ?`
 	err = Db.QueryRow(cmd, id).Scan(
 		&thread.ID,
 		&thread.Title,
+		&thread.CategoryID,
 		&thread.CreatedAt)
 
 	return thread, err
 }
 
 func GetThreads() (threads []Thread, err error) {
-	cmd := `select id, title, created_at from threads`
+	cmd := `select id, title, category_id, created_at from threads`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Println(err)
@@ -63,6 +61,7 @@ func GetThreads() (threads []Thread, err error) {
 		err = rows.Scan(
 			&thread.ID,
 			&thread.Title,
+			&thread.CategoryID,
 			&thread.CreatedAt)
 
 		if err != nil {
@@ -203,29 +202,4 @@ func (t *Thread) DeleteThread() (err error) {
 	}
 
 	return err
-}
-
-func GetCatetories() (categories []Category, err error) {
-	cmd := `select distinct name, created_at from categories`
-
-	rows, err := Db.Query(cmd)
-	if err != nil {
-		log.Println(err)
-	}
-
-	for rows.Next() {
-		var category Category
-		err = rows.Scan(
-			&category.Name,
-			&category.CreatedAt)
-
-		if err != nil {
-			log.Println(err)
-		}
-
-		categories = append(categories, category)
-	}
-	rows.Close()
-
-	return categories, err
 }
