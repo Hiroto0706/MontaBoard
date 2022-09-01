@@ -52,7 +52,7 @@ func GetCategoryByCategoryID(id int) (category Category, err error) {
 	return category, err
 }
 
-func GetCategory(id int) (category Category, err error){
+func GetCategory(id int) (category Category, err error) {
 	cmd := `select id, name, created_at from categories where id = ?`
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -61,4 +61,19 @@ func GetCategory(id int) (category Category, err error){
 		&category.CreatedAt)
 
 	return category, err
+}
+
+func GetCategoryName(threadID int) (name string, err error) {
+	cmd := `select id, name, created_at from categories where id = ?`
+
+	category := Category{}
+
+	err = Db.QueryRow(cmd, threadID).Scan(
+		&category.ID,
+		&category.Name,
+		&category.CreatedAt)
+
+	name = category.Name
+
+	return name, err
 }

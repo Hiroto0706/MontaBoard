@@ -1,5 +1,5 @@
 {{define "content"}}
-<h2>スレッド一覧（ " {{.UserName}} " でログイン済み）</h2>
+<h2>スレッド一覧</h2>
   <ul class="threads">
     {{range .Threads}}
     <li>
@@ -33,6 +33,7 @@
         <option value="13">旅行・観光</option>
         <option value="14">その他</option>
     </select>
+    <input type="hidden" name="category-form" value="0">
       <button type="submit" class="create-btn" id="create-thread-btn" onclick="do_submit(this);return false;">作成する</button>
     </div>
   </form>

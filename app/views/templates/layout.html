@@ -10,37 +10,6 @@
   <title>もんた。掲示板</title>
 
   <script src="/static/js/jquery-3.6.0.min.js"></script>
-  <script>
-    "user-strict";
-
-    $(function(){
-      $('.content-btn').click(function() {
-        $(this).parents('form').attr('action', $(this).data('action'));
-
-        var click =  $(this).data('id');
-
-        if(click == 'update') {
-          if(!confirm('この内容で更新してよろしいですか？')){
-            /* キャンセルの時の処理 */
-            return false;
-          }else{
-            /*OKの時の処理 */
-            $(this).parents('form').submit();
-          }
-        }
-        if(click == 'delete') {
-          if(!confirm('この投稿を削除してよろしいですか？')){
-            /* キャンセルの時の処理 */
-            return false;
-          }else{
-            /*OKの時の処理 */
-            $(this).parents('form').submit();
-          }
-        }
-      });
-      
-    });
-  </script>
 </head>
 <body>
   <header class="header-image">
@@ -49,7 +18,11 @@
   <div class="wrapper">
     <div class="keijiban-title">
       <h1 class="keijiban-title-h1">
+        {{if .UserName}}
+        <a href="/">もんた。掲示板</a><span>（ {{.UserName}} でログイン済み）</span>
+        {{else}}
         <a href="/">もんた。掲示板</a>
+        {{end}}
       </h1>
       <div>
         {{template "side-btn"}}

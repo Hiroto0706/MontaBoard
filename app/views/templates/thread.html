@@ -1,12 +1,12 @@
 {{define "content"}}
 <h2 class="thread-title">{{.Title}}</h2>
-カテゴリー : <span class="category-span">{{.CategoryName}}</span>
+カテゴリー : <a href="/category/{{.CategoryID}}" class="category-span"><span>{{.CategoryName}}</span></a>
 
 <div class="section-thread">
   {{range .Contents}}
   <div class="thread-content">
     <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
-    <p class="content-text">{{.Content}}</p>
+    <pre class="content-text">{{.Content}}</pre>
   </div>
   {{end}}
   <div class="induction-text">

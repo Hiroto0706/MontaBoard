@@ -1,6 +1,6 @@
 {{define "content"}}
 <h2 class="thread-title">{{.Title}}</h2>
-カテゴリー : <span class="category-span">{{.CategoryName}}</span>
+カテゴリー : <a href="/index/category/{{.CategoryID}}" class="category-span"><span>{{.CategoryName}}</span></a>
 
 <div class="section-thread">
   {{range .Contents}}
@@ -9,10 +9,11 @@
     <form role="form" action="" method="POST">
       <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
       <p class="content-text">
-        <input type="text" value="{{.Content}}" class="thread-form" name="content">
+        <textarea class="thread-form" name="content" id="thread-content" placeholder="ここにテキストを入力してね。(140字以内)">{{.Content}}</textarea>
       </p>
+      <div class="err_content" id="err_content"></div>
       <div class="content-btn">
-        <button type="submit" class="update-btn content-btn" data-action="/index/update/{{.ID}}" data-id="update">編集</button>
+        <button type="submit" class="update-btn content-btn" id="update" data-action="/index/update/{{.ID}}" data-id="update">編集</button>
         <button type="submit" class="delete-btn content-btn" data-action="/index/delete/{{.ID}}" data-id="delete">削除</button>
       </div>
     </form>
@@ -20,7 +21,7 @@
   {{else if ne .UserID .LoginUserID}}
   <div class="thread-content">
     <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
-    <p class="content-text">{{.Content}}</p>
+    <pre class="content-text">{{.Content}}</pre>
   </div>
   {{end}}
   {{end}}
@@ -28,21 +29,172 @@
 
 <form class="form-newcontent" role="form" action="/index/create/{{.LoginUserID}}" method="post">
   <h2>会話に参加する</h2>
-  <textarea class="new-content-text" name="content" id="content">ここにテキストを入力してね。</textarea>
+  <div class="err_text" id="err_textbox"></div>
+  <textarea class="new-content-text" name="content" id="content-form" placeholder="ここにテキストを入力してね。(140字以内)"></textarea>
   <input type="hidden" name="id" value="{{.ID}}">
-  <button type="submit" class="create-btn" id="create-btn">投稿する</button>
+  <button type="submit" class="create-btn" id="create-btn" onclick="content_submit(this);return false;">投稿する</button>
 </form>
 
 <script>
-  $('#create-btn').click(function(){
-      if(!confirm('本当にこの内容を投稿して大丈夫ですか？')){
-          /* キャンセルの時の処理 */
-          return false;
-      }else{
-          /*OKの時の処理 */
-          location.href = '/index/create/{{.LoginUserID}}';
+  $(function(){
+      $("#content-form").bind("blur", function() {
+        var _textbox = $(this).val();
+        var result = check_textbox(_textbox);
+      });
+    });
+    
+    function check_textbox(str){
+      $("#err_textbox p").remove();
+      var _result = true;
+      var _textbox = $.trim(str);
+      
+      if(_textbox.match(/^[ \r\n\t]*$/)){
+        $("#err_textbox").append("<p><i class=\"fa fa-exclamation-triangle\"></i>投稿内容を記入してください</p>");
+        _result = false;
+      }else if(_textbox.length > 140){
+        $("#err_textbox").append("<p><i class=\"fa fa-exclamation-triangle\"></i>投稿内容は140文字以内にしてください。</p>");
+        _result = false;
       }
-  });
+      return _result;
+    }
+    
+    function do_check() {
+      var result = true;
+      var check_result = true;
+      
+      // エラーメッセージ初期化
+      $(".err_text").empty();
+      
+      // テキストボックス
+      var _textbox = $("#content-form").val();
+      result = check_textbox(_textbox);
+      if(!result){
+        check_result = result;
+      }
+      
+      return check_result;
+    }
+    
+    function content_submit(btn){
+      $(btn).css("pointer-events", "none");
+      var result = do_check();
+      
+      if(result){
+        if(!confirm('本当にこの内容を投稿して大丈夫ですか？')){
+          /* キャンセルの時の処理 */
+          // console.log("canceled");
+          $(btn).css("pointer-events", "inherit");
+          return false;
+        }else{
+          /*OKの時の処理 */
+          $('form').attr('action', "/index/create/{{.LoginUserID}}");
+          $('form').submit();
+        }
+      }else{
+        // console.log("end");
+        $(btn).css("pointer-events", "inherit");
+        return false;
+      }
+    }
 
+
+
+
+
+
+
+   
+
+
+    function check_content(str){
+      $("#err_content p").remove();
+      var _result = true;
+      var _textbox = $.trim(str);
+      
+      if(_textbox.match(/^[ \r\n\t]*$/)){
+        $("#err_content").append("<p><i class=\"fa fa-exclamation-triangle\"></i>投稿内容を記入してください</p>");
+        _result = false;
+      }else if(_textbox.length > 140){
+        $("#err_content").append("<p><i class=\"fa fa-exclamation-triangle\"></i>投稿内容は140文字以内にしてください。</p>");
+        _result = false;
+      }
+      return _result;
+    }
+
+
+
+    function content_check() {
+      var result = true;
+      var check_result = true;
+      
+      // エラーメッセージ初期化
+      $(".err_content").empty();
+      
+      // テキストボックス
+      var _textbox = $("#thread-content").val();
+      result = check_content(_textbox);
+      if(!result){
+        check_result = result;
+      }
+      
+      return check_result;
+    }
+
+    $(function(){
+      $('.content-btn').click(function() {
+        $(this).parents('form').attr('action', $(this).data('action'));
+        $(this).css("pointer-events", "none");
+
+        var click =  $(this).data('id');
+
+        if(click == 'delete') {
+          if(!confirm('この投稿を削除してよろしいですか？')){
+            /* キャンセルの時の処理 */
+            return false;
+          }else{
+            /*OKの時の処理 */
+            $(this).parents('form').submit();
+          }
+        }
+
+        var result = content_check();
+
+        if(result == false){
+          $(this).css("pointer-events", "inherit");
+          return false;
+        }
+
+        if(click == 'update') {
+          if(!confirm('この内容で更新してよろしいですか？')){
+            /* キャンセルの時の処理 */
+            $(this).css("pointer-events", "inherit");
+            return false;
+          }else{
+            /*OKの時の処理 */
+            $(this).parents('form').submit();
+          }
+        }
+      });
+      
+    });
+
+ 
+
+
+
+
+
+    const autoResizeTextarea = e => {
+      const s = getComputedStyle(e);
+      e.style.height = 0;
+      e.style.height = `${e.scrollHeight + parseInt(s.marginTop) + parseInt(s.marginBottom)-6}px`;
+    };
+    document.querySelectorAll('.thread-form').forEach(e => autoResizeTextarea(e));
+    document.addEventListener('input', e => {
+      if(!e.target.classList.contains('thread-form')) return;
+      autoResizeTextarea(e.target);
+    });
+
+  
   </script>
 {{end}}

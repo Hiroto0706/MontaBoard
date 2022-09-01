@@ -50,7 +50,7 @@ func GetThread(id int) (thread Thread, err error) {
 }
 
 func GetThreads() (threads []Thread, err error) {
-	cmd := `select id, title, category_id, created_at from threads`
+	cmd := `select id, title, category_id, created_at from threads order by id desc`
 	rows, err := Db.Query(cmd)
 	if err != nil {
 		log.Println(err)
@@ -202,4 +202,30 @@ func (t *Thread) DeleteThread() (err error) {
 	}
 
 	return err
+}
+
+func GetThreadsByCategory(id int) (threads []Thread, err error) {
+	cmd := `select id, title, category_id, created_at from threads where category_id = ?`
+	rows, err := Db.Query(cmd, id)
+	if err != nil {
+		log.Println(err)
+	}
+
+	for rows.Next() {
+		var thread Thread
+		err = rows.Scan(
+			&thread.ID,
+			&thread.Title,
+			&thread.CategoryID,
+			&thread.CreatedAt)
+
+		if err != nil {
+			log.Println(err)
+		}
+
+		threads = append(threads, thread)
+	}
+	rows.Close()
+
+	return threads, err
 }
