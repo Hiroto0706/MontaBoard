@@ -12,7 +12,7 @@
 <ul class="populars">
   {{range $index, $thread := .PopularThreads}}
     <li>
-      <span class="popular-rank">{{$index}}</span>位 : <a href="/thread/{{.ID}}">{{$thread.Title}}</a>
+      <span class="popular-rank" value="{{$index}}">{{$index}}</span>位 : <a href="/thread/{{.ID}}">{{$thread.Title}}</a>
     </li>
   {{end}}
 </ul>
@@ -30,11 +30,12 @@
 <script>
   "user-strict";
 
+  var check = 0;
+
   $(function(){
     for(i = 0; i < 5; i++){
       var rank = parseInt($(".populars li span").eq(i).text());
       rank = rank + 1;
-      // console.log(rank);
       $(".populars li span").eq(i).text(rank);
     }
   });

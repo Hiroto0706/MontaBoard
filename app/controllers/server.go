@@ -31,7 +31,7 @@ func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err e
 	return sess, err
 }
 
-var validPath = regexp.MustCompile("^/index/(thread|update|delete|create|category)/([0-9]+)$")
+var validPath = regexp.MustCompile("^/index/(thread|update|delete|create|category|setting|nameSetting|emailSetting|passwordSetting)/([0-9]+)$")
 
 var normalPath = regexp.MustCompile("^/thread/([0-9]+)$")
 var categoryPath = regexp.MustCompile("^/category/([0-9]+)$")
@@ -101,7 +101,6 @@ func StartMainServer() error {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/authenticate", authenticate)
 	http.HandleFunc("/index", index)
-	http.HandleFunc("/setting", setting)
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/index/thread/", parseURL(indexThread))
 	http.HandleFunc("/index/category/", parseURL(indexCategory))
@@ -109,5 +108,9 @@ func StartMainServer() error {
 	http.HandleFunc("/index/create/", parseURL(contentNew))
 	http.HandleFunc("/index/update/", parseURL(contentUpdate))
 	http.HandleFunc("/index/delete/", parseURL(contentDelete))
+	http.HandleFunc("/index/setting/", parseURL(setting))
+	http.HandleFunc("/index/nameSetting/", parseURL(nameSetting))
+	http.HandleFunc("/index/emailSetting/", parseURL(emailSetting))
+	http.HandleFunc("/index/passwordSetting/", parseURL(passwordSetting))
 	return http.ListenAndServe(":"+config.Config.Port, nil)
 }

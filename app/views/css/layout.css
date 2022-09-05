@@ -269,6 +269,9 @@ textarea {
   margin-left: auto;
   margin-right: 0;
 }
+.login-error {
+  display: none;
+}
 
 
 
@@ -408,3 +411,60 @@ textarea {
 .index-category-title-span {
   font-size: 2.2rem;
 }
+
+
+/* setting.htmlのcss */
+.setting-section {
+  padding: 3%;
+}
+
+.name-input {
+  border: solid 1px black;
+  width: 100%;
+  padding: 0.6%;
+  margin-bottom: 20px;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.password-input {
+  border: solid 1px black;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 8px;
+  padding: 0.6%;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.password-input input {
+  width: 96%;
+  border: solid 1px rgb(54, 54, 54);
+}
+
+#textPassword, #textPasswordCheck {
+  border: none; /* デフォルト枠線を消す */
+}
+
+.setting-btn {
+  background-color: rgb(0, 210, 95);
+  color: white;
+  padding: 1%;
+  border-radius: 5px;
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+#err_password, #err_check, #err_email, #err_name {
+  color: red;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.err_login {
+  color: red;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+

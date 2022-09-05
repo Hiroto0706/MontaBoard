@@ -1,6 +1,11 @@
 {{define "content"}}
   <h2>ログインフォーム</h2>
   <form class="form-login" role="form" action="/authenticate" method="post">
+    <div class="login-error">
+      <p class="err_login">何かエラーが起きました。</p>
+    </div>
+
+    <div class="err_text" id="err_textbox"></div>
     <input id="email" type="email" placeholder="メールアドレス" class="form-control" name="email">
     <input id="password" type="password" placeholder="パスワード" class="form-control" name="password">
     <button class="btn-login" type="submit">ログインする</button>

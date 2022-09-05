@@ -20,6 +20,8 @@ type Thread struct {
 	LoginUserID    int
 	CategoryName   string
 	UserName       string
+	User           User
+	ErrorCheck     int
 }
 
 func CreateThread(title string, categoryID int) (err error) {
@@ -167,16 +169,22 @@ func GetPopularThreadsLimitFive() (popularThreads []Thread, err error) {
 
 	sort.Sort(r)
 
+	index := 0
 	for _, value := range r {
-		rank, _ := strconv.Atoi(value.rank)
-		addThread, _ := GetThread(rank)
-		if err != nil {
-			log.Println(err)
+		if index < 5 {
+			rank, _ := strconv.Atoi(value.rank)
+			addThread, _ := GetThread(rank)
+			if err != nil {
+				log.Println(err)
+			}
+			popularThreads = append(popularThreads, addThread)
+			index++
+		} else {
+			break
 		}
-		popularThreads = append(popularThreads, addThread)
 	}
 
-	return popularThreads[:5], err
+	return popularThreads, err
 }
 
 func (t *Thread) UpdataThread() (err error) {

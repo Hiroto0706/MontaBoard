@@ -20,7 +20,12 @@
   </div>
   {{else if ne .UserID .LoginUserID}}
   <div class="thread-content">
-    <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
+    <div class="content-name">{{.ContentIDInThread}} : 
+      {{if .UserName}}
+      <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
+      {{else}}
+      <span class="user-name">名無しのプー太郎さん</span>  {{.CreatedAt}}</div>
+      {{end}}
     <pre class="content-text">{{.Content}}</pre>
   </div>
   {{end}}
@@ -131,7 +136,7 @@
       $(".err_content").empty();
       
       // テキストボックス
-      var _textbox = $("#thread-content").val();
+      var _textbox = $(".thread-form").val();
       result = check_content(_textbox);
       if(!result){
         check_result = result;
@@ -150,6 +155,7 @@
         if(click == 'delete') {
           if(!confirm('この投稿を削除してよろしいですか？')){
             /* キャンセルの時の処理 */
+            $(this).css("pointer-events", "inherit");
             return false;
           }else{
             /*OKの時の処理 */

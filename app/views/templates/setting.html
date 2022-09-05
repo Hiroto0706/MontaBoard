@@ -1,3 +1,199 @@
 {{define "content"}}
-<h1>this is a setting.</h1>
+<h2>設定</h2>
+
+<form class="setting-section" role="form" action="" method="POST">
+  <div class="name-setting">
+    名前
+    <div class="err_name" id="err_name"></div>
+    <input type="text" class="name-input" value="{{.UserName}}" placeholder="名前" name="name" id="nameInput">
+  </div>
+  <button type="submit" class="setting-btn name-btn">名前を更新する</button>
+</form>
+
+<form class="setting-section" role="form" action="" method="POST">
+  <div class="name-setting">
+    メールアドレス
+    <div class="err_email" id="err_email"></div>
+    <input type="email" class="name-input" value="{{.User.Email}}" placeholder="メールアドレス" name="email" id="emailInput" required>
+  </div>
+  <button type="submit" class="setting-btn email-btn">メールアドレスを更新する</button>
+</form>
+
+<form class="setting-section" role="form" action="" method="POST">
+  <div class="password-setting">
+    新しいパスワード
+    <div class="err_password" id="err_password"></div>
+    <div class="password-input">
+      <input type="password" id="textPassword" value="" placeholder="パスワード" name="password">
+      <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
+    </div>
+    新しいパスワード(確認)
+    <div class="err_check" id="err_check"></div>
+    <div class="password-input">
+      <input type="password" id="textPasswordCheck" value="" placeholder="パスワード(確認)" name="passwordCheck">
+      <span id="buttonEyeCheck" class="fa fa-eye" onclick="pushHideButtonCheck()"></span>
+    </div>
+  </div>
+  <button type="submit" class="setting-btn password-btn">パスワード更新する</button>
+</form>
+<script>
+function pushHideButton() {
+    var txtPass = document.getElementById("textPassword");
+    var btnEye = document.getElementById("buttonEye");
+    if (txtPass.type === "text") {
+      txtPass.type = "password";
+      btnEye.className = "fa fa-eye";
+    } else {
+      txtPass.type = "text";
+      btnEye.className = "fa fa-eye-slash";
+    }
+  }
+function pushHideButtonCheck() {
+    var txtPass = document.getElementById("textPasswordCheck");
+    var btnEye = document.getElementById("buttonEyeCheck");
+    if (txtPass.type === "text") {
+      txtPass.type = "password";
+      btnEye.className = "fa fa-eye";
+    } else {
+      txtPass.type = "text";
+      btnEye.className = "fa fa-eye-slash";
+    }
+  }
+
+
+  $('.name-btn').click(function(){
+    var name = $("#nameInput").val();
+    var name_result = check_name(name);
+
+    if(name_result == true){
+      if(!confirm('この名前で更新してよろしいですか？')){
+          /*キャンセルの時の処理 */
+          return false;
+      }else{
+          /*OKの時の処理  今回は特に処理がないので空*/
+          $(this).parent('form').attr('action', "/index/nameSetting/{{.User.ID}}");
+      }
+    }else{
+      return false;
+    }
+  });
+
+  $('.email-btn').click(function(){
+    var email = $("#emailInput").val();
+    var email_result = check_email(email);
+
+    if(email_result == true){
+      if(!confirm('このメールアドレスで更新してよろしいですか？')){
+          /*キャンセルの時の処理 */
+          return false;
+      }else{
+          /*OKの時の処理  今回は特に処理がないので空*/
+          $(this).parent('form').attr('action', "/index/emailSetting/{{.User.ID}}");
+      }
+    }else{
+      return false;
+    }
+  });
+
+  $('.password-btn').click(function(){
+    var _password1 = $("#textPassword").val();
+		var password1_result = check_password(_password1);
+    var _password2 = $("#textPasswordCheck").val();
+		var password2_result = check_password_check(_password2);
+
+    if(password1_result == true && password2_result == true ){
+      if(confirm("このパスワードで更新してよろしいですか？")){
+        $(this).parent('form').attr('action', "/index/passwordSetting/{{.User.ID}}");
+      }else {
+        return false;
+      }
+    }else if(password1_result == false || password2_result == false){
+      return false;
+    }
+  });
+
+
+
+// passwordの確認
+$(function(){
+	$("#textPassword").bind("blur", function() {
+		var _password = $(this).val();
+		check_password(_password);
+	});
+});
+
+function check_password(str){
+	$("#err_password p").remove();
+	var _result = true;
+	var _password = $.trim(str);
+
+	if(_password.match(/^[ \r\n\t]*$/)){
+		$("#err_password").append("<p><i class=\"fa fa-exclamation-triangle\"></i>パスワードを入力してください。</p>");
+		_result = false;
+	}
+	return _result;
+}
+
+$(function(){
+	$("#textPasswordCheck").bind("blur", function() {
+		var _password = $(this).val();
+		check_password_check(_password);
+	});
+});
+
+function check_password_check(str){
+	$("#err_check p").remove();
+	var _result = true;
+  var _password1 = $("#textPassword").val();
+	var _password2 = $.trim(str);
+
+  if(_password1 != _password2){
+    $("#err_check").append("<p><i class=\"fa fa-exclamation-triangle\"></i>パスワードが一致しません。</p>");
+    _result = false;
+  }
+	return _result;
+}
+
+
+// nameの確認
+$(function(){
+	$("#nameInput").bind("blur", function() {
+		var _password = $(this).val();
+		check_name(_password);
+	});
+});
+
+function check_name(str){
+	$("#err_name p").remove();
+	var _result = true;
+	var _password = $.trim(str);
+
+	if(_password.match(/^[ \r\n\t]*$/)){
+		$("#err_name").append("<p><i class=\"fa fa-exclamation-triangle\"></i>名前を入力してください。</p>");
+		_result = false;
+	}
+	return _result;
+}
+
+// emailの確認
+$(function(){
+	$("#emailInput").bind("blur", function() {
+		var _password = $(this).val();
+		check_email(_password);
+	});
+});
+
+function check_email(str){
+	$("#err_email p").remove();
+	var _result = true;
+	var _password = $.trim(str);
+
+	if(_password.match(/^[ \r\n\t]*$/)){
+		$("#err_email").append("<p><i class=\"fa fa-exclamation-triangle\"></i>メールアドレスを入力してください。</p>");
+		_result = false;
+	}
+	return _result;
+}
+
+</script>
 {{end}}

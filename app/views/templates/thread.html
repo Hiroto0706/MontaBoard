@@ -5,7 +5,12 @@
 <div class="section-thread">
   {{range .Contents}}
   <div class="thread-content">
-    <div class="content-name">{{.ContentIDInThread}} : <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
+    <div class="content-name">{{.ContentIDInThread}} : 
+      {{if .UserName}}
+      <span class="user-name">{{.UserName}}さん</span>  {{.CreatedAt}}</div>
+      {{else}}
+      <span class="user-name">名無しのプー太郎さん</span>  {{.CreatedAt}}</div>
+      {{end}}
     <pre class="content-text">{{.Content}}</pre>
   </div>
   {{end}}

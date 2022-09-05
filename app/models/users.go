@@ -62,6 +62,36 @@ func (u *User) UpdateUser() (err error) {
 	return err
 }
 
+func (u *User) UpdateUserName() (err error) {
+	cmd := `update users set name = ? where id = ?`
+	_, err = Db.Exec(cmd, u.Name, u.ID)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return err
+}
+
+func (u *User) UpdateUserEmail() (err error) {
+	cmd := `update users set email = ? where id = ?`
+	_, err = Db.Exec(cmd, u.Email, u.ID)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return err
+}
+
+func (u *User) UpdateUserPassword() (err error) {
+	cmd := `update users set password = ? where id = ?`
+	_, err = Db.Exec(cmd, Encrypt(u.Password), u.ID)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return err
+}
+
 func (u *User) DeleteUser() (err error) {
 	cmd := `delete from users where id = ?`
 	_, err = Db.Exec(cmd, u.ID)

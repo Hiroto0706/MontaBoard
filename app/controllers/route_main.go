@@ -157,12 +157,14 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
+
 		thread := models.Thread{}
 		thread.Threads = threads
 		thread.NewThreads = newThreads
 		thread.Categories = categories
 		thread.PopularThreads = popularThreads
 		thread.UserName = loginUser.Name
+		thread.User = loginUser
 
 		generateHTML(w, thread, "layout", "index", "side-btn-if-login", "side-menu-if-login")
 	}
@@ -397,40 +399,3 @@ func indexCategory(w http.ResponseWriter, r *http.Request, id int) {
 	}
 }
 
-func setting(w http.ResponseWriter, r *http.Request) {
-	sess, err := session(w, r)
-	if err != nil {
-		http.Redirect(w, r, "/", 302)
-	} else {
-		threads, err := models.GetThreads()
-		if err != nil {
-			log.Println(err)
-		}
-		newThreads, err := models.GetNewThreadsLimitFive()
-		if err != nil {
-			log.Println(err)
-		}
-
-		loginUser, err := sess.GetUserBySession()
-		if err != nil {
-			log.Println(err)
-		}
-
-		categories, err := models.GetCatetories()
-		if err != nil {
-			log.Println(err)
-		}
-		popularThreads, err := models.GetPopularThreadsLimitFive()
-		if err != nil {
-			log.Println(err)
-		}
-		thread := models.Thread{}
-		thread.Threads = threads
-		thread.NewThreads = newThreads
-		thread.Categories = categories
-		thread.PopularThreads = popularThreads
-		thread.UserName = loginUser.Name
-
-		generateHTML(w, thread, "layout", "setting", "side-btn-if-login", "side-menu-if-login")
-	}
-}
